@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { formatStraightDistance } from '../../shared/filter';
 import type { PublicVenue } from '../../shared/types';
 import { areaLabel, PARKING_LABEL, price, purpose } from '../lib/format';
-import { BeverageBadges, Icon, OpenBadge, VenueImage } from './ui';
+import { Icon, OpenBadge, VenueImage } from './ui';
 import { BrandMark } from './BrandMark';
-import { featuredBeverages, featuredLabel } from '../lib/brand';
+import { featuredBeverages, featuredLabel, hasCassBottle } from '../lib/brand';
 
 interface Props {
   venue: PublicVenue;
@@ -78,7 +78,12 @@ export const VenueCard = forwardRef<HTMLElement, Props>(function VenueCard(
             )}
             {v.latitude === null && <span className="fact muted">지도 위치 확인 중</span>}
           </div>
-          {showBeverages && <BeverageBadges beverages={v.beverages.filter((b) => !featured.includes(b))} />}
+          {showBeverages && hasCassBottle(v) && (
+            <p className="cass-bottle-line">
+              <BrandMark productId="cass" servingType="bottle" imageHeight={22} />
+              카스 병 있어요
+            </p>
+          )}
         </div>
       </button>
       <Link className="btn btn-secondary venue-card-cta" to={{ pathname: `/venues/${v.slug}`, search: detailSearch }}>

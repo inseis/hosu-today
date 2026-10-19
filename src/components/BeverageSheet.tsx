@@ -46,7 +46,7 @@ export function BeverageSheet({ open, products, draftOnly, onApply, onClose }: P
         <p className="sheet-help">업소가 취급을 확인한 제품 기준입니다. 선택하지 않으면 모든 업소를 보여줍니다.</p>
         <fieldset className="chip-grid">
           <legend className="sr-only">제품</legend>
-          {catalog.beverageProducts.map((p) => (
+          {catalog.beverageProducts.filter((p) => (p as { selectable?: boolean }).selectable !== false).map((p) => (
             <label key={p.id} className={`chip chip-check${sel.includes(p.id) ? ' is-on' : ''}`}>
               <input type="checkbox" checked={sel.includes(p.id)} onChange={() => toggle(p.id)} />
               {sel.includes(p.id) && <Icon name="check" size={16} />}

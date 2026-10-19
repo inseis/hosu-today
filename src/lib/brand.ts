@@ -10,8 +10,22 @@ export const BRAND_COLOR: Record<string, string> = {
   hanmac: '#a87420',
 };
 
+/** 강조 띠·지도 강조 마커 대상: 카스 생맥주·카스 0.00·한맥 (카스 병은 대부분 업소가 취급해 은은하게만 표시) */
 export function featuredBeverages(v: Pick<PublicVenue, 'beverages'>): Beverage[] {
-  return v.beverages.filter((b) => b.availabilityStatus === 'available' && (FEATURED_PRODUCTS as readonly string[]).includes(b.productId));
+  return v.beverages.filter((b) => b.availabilityStatus === 'available'
+    && (FEATURED_PRODUCTS as readonly string[]).includes(b.productId)
+    && !(b.productId === 'cass' && b.servingType === 'bottle'));
+}
+
+export function hasCassBottle(v: Pick<PublicVenue, 'beverages'>): boolean {
+  return v.beverages.some((b) => b.availabilityStatus === 'available' && b.productId === 'cass' && b.servingType === 'bottle');
+}
+
+/** 상세 화면 취급 목록 순서: 카스 계열 → 한맥 → 그 외 */
+const ORDER = ['cass', 'cass-zero', 'cass-lemon-squeeze-zero', 'hanmac'];
+export function sortBeverages(list: Beverage[]): Beverage[] {
+  const rank = (b: Beverage) => { const i = ORDER.indexOf(b.productId); return i < 0 ? 99 : i; };
+  return [...list].sort((a, b) => rank(a) - rank(b) || (a.servingType === 'draft' ? -1 : 1));
 }
 
 export const isFeatured = (v: Pick<PublicVenue, 'beverages'>) => featuredBeverages(v).length > 0;

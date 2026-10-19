@@ -25,6 +25,8 @@ if (!KEY || !file) {
 interface NoteRecord {
   id?: string; area?: string; storeName?: string; address?: string; businessType?: string;
   usePurpose?: string; visitStatus?: string; products?: Record<string, string>; updatedAt?: string;
+  /** 조사 시 업소에서 쓰고 있던 제품 목록 (자유 입력). 제품 취급 여부만 추출하고 원문은 저장하지 않음 */
+  competitors?: string;
 }
 
 const ID_PREFIX = 'jh-';
@@ -43,7 +45,32 @@ const CATEGORY: Record<string, string> = {
 };
 
 // 노트의 제품 표기 → 카탈로그 제품. 코로나 등 카탈로그에 없는 제품은 제외
-const PRODUCTS: Record<string, Omit<Beverage, 'availabilityStatus' | 'verifiedAt' | 'price'>> = {
+type BevBase = Omit<Beverage, 'availabilityStatus' | 'verifiedAt' | 'price'>;
+
+// 조사 메모의 '사용 제품' 자유 입력 → 제품 (기본 병, 바로 뒤에 '생'이 붙으면 생맥주)
+// 예: "카스 테라 켈리 테라제로", "스텔라2 카스 생, 카스 테라", "테라 생"
+// 테라라이트·하이트제로 등 카탈로그에 없는 제품은 제외
+const USED_RE = /(카스\s?제로|테라\s?제로|테라\s?라이트|테라|켈리|캘리|카스)(\s?생(?!맥))?/g;
+const USED: Record<string, BevBase | null> = {
+  카스: { productId: 'cass', brand: '카스', productName: '카스', servingType: 'bottle', volumeMl: null },
+  카스제로: { productId: 'cass-zero', brand: '카스', productName: '카스 0.00', servingType: 'bottle', volumeMl: null },
+  테라: { productId: 'terra', brand: '테라', productName: '테라', servingType: 'bottle', volumeMl: null },
+  테라제로: { productId: 'terra-zero', brand: '테라', productName: '테라 제로', servingType: 'bottle', volumeMl: null },
+  켈리: { productId: 'kelly', brand: '켈리', productName: '켈리', servingType: 'bottle', volumeMl: null },
+  캘리: { productId: 'kelly', brand: '켈리', productName: '켈리', servingType: 'bottle', volumeMl: null },
+  테라라이트: null,
+};
+function parseUsed(text: string): BevBase[] {
+  const out: BevBase[] = [];
+  for (const m of text.matchAll(USED_RE)) {
+    const base = USED[m[1].replace(/\s/g, '')];
+    if (!base) continue;
+    out.push(m[2] ? { ...base, servingType: 'draft' } : base);
+  }
+  return out;
+}
+
+const PRODUCTS: Record<string, BevBase> = {
   '카스 생': { productId: 'cass', brand: '카스', productName: '카스', servingType: 'draft', volumeMl: null },
   // 노트의 '카스 0.0' 표기는 운영자 확인에 따라 카스 0.00 병맥주로 등록 (2026-10-19)
   '카스 0.0': { productId: 'cass-zero', brand: '카스', productName: '카스 0.00', servingType: 'bottle', volumeMl: null },
@@ -100,14 +127,18 @@ for (const [i, r] of targets.entries()) {
   const address = normAddr(r.address!);
   const loc = await locate(name, address);
   const verified = (r.updatedAt ?? '').slice(0, 10) || today;
-  const beverages: Beverage[] = Object.entries(r.products ?? {})
-    .filter(([k, v]) => v === '취급 중' && PRODUCTS[k])
-    .map(([k]) => ({ ...PRODUCTS[k], price: null, availabilityStatus: 'available', verifiedAt: verified }));
+  const fromProducts = Object.entries(r.products ?? {}).filter(([k, v]) => v === '취급 중' && PRODUCTS[k]).map(([k]) => PRODUCTS[k]);
+  const seen = new Set<string>();
+  const beverages: Beverage[] = [...fromProducts, ...parseUsed(r.competitors ?? '')]
+    .filter((b) => { const k = `${b.productId}|${b.servingType}`; if (seen.has(k)) return false; seen.add(k); return true; })
+    .map((b) => ({ ...b, price: null, availabilityStatus: 'available', verifiedAt: verified }));
   const purposes: PurposeTag[] = (r.usePurpose ?? '').includes('주류') ? ['light-snack'] : (r.usePurpose ?? '').includes('식사') ? ['meal'] : [];
   const kakaoCat = loc?.kakaoCategory?.split('>').pop()?.trim();
   const hash = crypto.createHash('sha1').update(r.id ?? name).digest('hex').slice(0, 8);
   const id = `${ID_PREFIX}${loc?.placeId ?? hash}`;
-  const featured = beverages.some((b) => ['cass', 'cass-zero', 'hanmac'].includes(b.productId));
+  // 공개 순서: 강조 제품(카스 생·카스 0.00·한맥) → 카스 병 → 그 외
+  const featured = beverages.some((b) => ['cass-zero', 'hanmac'].includes(b.productId) || (b.productId === 'cass' && b.servingType !== 'bottle'));
+  const cassBottle = beverages.some((b) => b.productId === 'cass' && b.servingType === 'bottle');
   venues.push({
     ...emptyVenue(id),
     name,
@@ -119,7 +150,7 @@ for (const [i, r] of targets.entries()) {
     kakaoPlaceId: loc?.placeId ?? null,
     purposeTags: purposes,
     beverages,
-    displayOrder: (featured ? 10 : 100) + i,
+    displayOrder: (featured ? 10 : cassBottle ? 100 : 200) + i,
     isPublished: true,
     informationVerifiedAt: verified,
   });
@@ -171,5 +202,5 @@ await update('parking', () => ({ next: parking }));
 
 console.log(report.join('\n'));
 console.log(`\n업소 ${venues.length}곳 등록 (장소 매칭 ${report.filter((x) => x.startsWith('장소')).length}, 주소 좌표 ${report.filter((x) => x.startsWith('주소')).length}, 좌표 없음 ${report.filter((x) => x.startsWith('좌표없음')).length})`);
-console.log(`카스·한맥 취급 업소 ${venues.filter((v) => v.displayOrder < 100).length}곳`);
+console.log(`강조 업소(카스 생·0.00·한맥) ${venues.filter((v) => v.displayOrder < 100).length}곳, 카스 병 ${venues.filter((v) => v.beverages.some((b) => b.productId === 'cass' && b.servingType === 'bottle')).length}곳, 논알콜 ${venues.filter((v) => v.beverages.some((b) => b.productId === 'cass-zero' || b.productId === 'terra-zero')).length}곳`);
 console.log(`주차장 ${parking.length}곳 (공영 ${parking.filter((p) => p.kind === 'public').length}, 건물·민영 ${parking.filter((p) => p.kind === 'building').length})`);

@@ -1,5 +1,5 @@
 {
-  "_comment": "고객 화면 선택지 목록. 항목 추가·수정은 이 파일에서 합니다. id는 데이터 연결 키이므로 변경 시 업소 데이터의 productId도 함께 바꿔야 합니다.",
+  "_comment": "고객 화면 선택지 목록. 항목 추가·수정은 이 파일에서 합니다. id는 데이터 연결 키이므로 변경 시 업소 데이터의 productId도 함께 바꿔야 합니다. selectable:false 제품은 '음료 선택' 창에 나오지 않고 업소 상세의 취급 정보에만 표시됩니다.",
   "areas": [
     {
       "id": "lafesta",
@@ -68,6 +68,25 @@
       "id": "stella",
       "brand": "스텔라",
       "label": "스텔라"
+    },
+    {
+      "id": "terra",
+      "brand": "테라",
+      "label": "테라",
+      "selectable": false
+    },
+    {
+      "id": "kelly",
+      "brand": "켈리",
+      "label": "켈리",
+      "selectable": false
+    },
+    {
+      "id": "terra-zero",
+      "brand": "테라",
+      "label": "테라 제로",
+      "nonAlcoholic": true,
+      "selectable": false
     }
   ],
   "nonAlcoholicLabel": "논알콜·무알콜"

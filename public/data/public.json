@@ -29,7 +29,7 @@
       "entranceDescription": null,
       "floor": null,
       "beverages": [],
-      "displayOrder": 100,
+      "displayOrder": 200,
       "informationVerifiedAt": "2026-09-18"
     },
     {
@@ -60,7 +60,28 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 101,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -92,7 +113,18 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 102,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -124,7 +156,18 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 103,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -156,7 +199,18 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 104,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -188,7 +242,28 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 105,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -220,7 +295,18 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 106,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -253,7 +339,7 @@
       "entranceDescription": null,
       "floor": null,
       "beverages": [],
-      "displayOrder": 107,
+      "displayOrder": 207,
       "informationVerifiedAt": "2026-09-18"
     },
     {
@@ -284,7 +370,28 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 108,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -316,7 +423,28 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 109,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -348,7 +476,28 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 110,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -380,8 +529,19 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
-      "displayOrder": 111,
+      "beverages": [
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "draft",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
+      "displayOrder": 211,
       "informationVerifiedAt": "2026-09-18"
     },
     {
@@ -432,6 +592,26 @@
           "price": null,
           "availabilityStatus": "available",
           "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
         }
       ],
       "displayOrder": 22,
@@ -465,7 +645,38 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 113,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -497,7 +708,28 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 114,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -529,7 +761,38 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 115,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -581,6 +844,36 @@
           "price": null,
           "availabilityStatus": "available",
           "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra-zero",
+          "brand": "테라",
+          "productName": "테라 제로",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
         }
       ],
       "displayOrder": 26,
@@ -614,7 +907,48 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra-zero",
+          "brand": "테라",
+          "productName": "테라 제로",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 117,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -646,8 +980,59 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
-      "displayOrder": 118,
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "draft",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra-zero",
+          "brand": "테라",
+          "productName": "테라 제로",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
+      "displayOrder": 28,
       "informationVerifiedAt": "2026-09-18"
     },
     {
@@ -678,7 +1063,48 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra-zero",
+          "brand": "테라",
+          "productName": "테라 제로",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 119,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -720,6 +1146,16 @@
           "price": null,
           "availabilityStatus": "available",
           "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
         }
       ],
       "displayOrder": 30,
@@ -753,7 +1189,38 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 121,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -785,7 +1252,48 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra-zero",
+          "brand": "테라",
+          "productName": "테라 제로",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 122,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -817,8 +1325,29 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
-      "displayOrder": 123,
+      "beverages": [
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
+      "displayOrder": 223,
       "informationVerifiedAt": "2026-09-18"
     },
     {
@@ -849,7 +1378,48 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra-zero",
+          "brand": "테라",
+          "productName": "테라 제로",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 124,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -881,7 +1451,48 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra-zero",
+          "brand": "테라",
+          "productName": "테라 제로",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 125,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -913,7 +1524,38 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 126,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -945,8 +1587,29 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
-      "displayOrder": 127,
+      "beverages": [
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra-zero",
+          "brand": "테라",
+          "productName": "테라 제로",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
+      "displayOrder": 227,
       "informationVerifiedAt": "2026-09-18"
     },
     {
@@ -977,7 +1640,28 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 128,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -1009,8 +1693,19 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
-      "displayOrder": 129,
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "draft",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
+      "displayOrder": 39,
       "informationVerifiedAt": "2026-09-18"
     },
     {
@@ -1041,7 +1736,28 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 130,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -1073,7 +1789,38 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 131,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -1105,7 +1852,38 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 132,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -1147,6 +1925,36 @@
           "price": null,
           "availabilityStatus": "available",
           "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
         }
       ],
       "displayOrder": 43,
@@ -1180,7 +1988,48 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra-zero",
+          "brand": "테라",
+          "productName": "테라 제로",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 134,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -1212,7 +2061,48 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra-zero",
+          "brand": "테라",
+          "productName": "테라 제로",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 135,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -1244,7 +2134,48 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra-zero",
+          "brand": "테라",
+          "productName": "테라 제로",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 136,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -1276,7 +2207,38 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 137,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -1308,7 +2270,48 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra-zero",
+          "brand": "테라",
+          "productName": "테라 제로",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 138,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -1340,7 +2343,38 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 139,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -1372,7 +2406,38 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 140,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -1405,7 +2470,7 @@
       "entranceDescription": null,
       "floor": null,
       "beverages": [],
-      "displayOrder": 141,
+      "displayOrder": 241,
       "informationVerifiedAt": "2026-09-18"
     },
     {
@@ -1436,7 +2501,28 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 142,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -1468,7 +2554,28 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 143,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -1500,7 +2607,38 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 144,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -1542,6 +2680,36 @@
           "price": null,
           "availabilityStatus": "available",
           "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra-zero",
+          "brand": "테라",
+          "productName": "테라 제로",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
         }
       ],
       "displayOrder": 55,
@@ -1575,7 +2743,48 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "terra-zero",
+          "brand": "테라",
+          "productName": "테라 제로",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 146,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -1607,7 +2816,38 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 147,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -1639,7 +2879,38 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 148,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -1681,6 +2952,36 @@
           "price": null,
           "availabilityStatus": "available",
           "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
         }
       ],
       "displayOrder": 59,
@@ -1714,7 +3015,38 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 150,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -1747,7 +3079,7 @@
       "entranceDescription": null,
       "floor": null,
       "beverages": [],
-      "displayOrder": 151,
+      "displayOrder": 251,
       "informationVerifiedAt": "2026-09-18"
     },
     {
@@ -1821,7 +3153,38 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 153,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -1853,8 +3216,49 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
-      "displayOrder": 154,
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "cass-zero",
+          "brand": "카스",
+          "productName": "카스 0.00",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
+      "displayOrder": 64,
       "informationVerifiedAt": "2026-09-18"
     },
     {
@@ -1885,7 +3289,48 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra-zero",
+          "brand": "테라",
+          "productName": "테라 제로",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 155,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -1917,7 +3362,38 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 156,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -1950,7 +3426,7 @@
       "entranceDescription": null,
       "floor": null,
       "beverages": [],
-      "displayOrder": 157,
+      "displayOrder": 257,
       "informationVerifiedAt": "2026-09-18"
     },
     {
@@ -1981,7 +3457,38 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 158,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -2013,7 +3520,38 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-18"
+        }
+      ],
       "displayOrder": 159,
       "informationVerifiedAt": "2026-09-18"
     },
@@ -2046,7 +3584,7 @@
       "entranceDescription": null,
       "floor": null,
       "beverages": [],
-      "displayOrder": 160,
+      "displayOrder": 260,
       "informationVerifiedAt": "2026-09-21"
     },
     {
@@ -2077,7 +3615,38 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-21"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-21"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-21"
+        }
+      ],
       "displayOrder": 161,
       "informationVerifiedAt": "2026-09-21"
     },
@@ -2109,7 +3678,38 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-21"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-21"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-21"
+        }
+      ],
       "displayOrder": 162,
       "informationVerifiedAt": "2026-09-21"
     },
@@ -2141,7 +3741,38 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-10-19"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-10-19"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-10-19"
+        }
+      ],
       "displayOrder": 163,
       "informationVerifiedAt": "2026-10-19"
     },
@@ -2173,7 +3804,38 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-21"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-21"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-21"
+        }
+      ],
       "displayOrder": 164,
       "informationVerifiedAt": "2026-09-21"
     },
@@ -2205,7 +3867,38 @@
       "parkingCapacity": null,
       "entranceDescription": null,
       "floor": null,
-      "beverages": [],
+      "beverages": [
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-21"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-21"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-21"
+        }
+      ],
       "displayOrder": 165,
       "informationVerifiedAt": "2026-09-21"
     },
@@ -2243,6 +3936,36 @@
           "brand": "카스",
           "productName": "카스",
           "servingType": "draft",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-21"
+        },
+        {
+          "productId": "cass",
+          "brand": "카스",
+          "productName": "카스",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-21"
+        },
+        {
+          "productId": "terra",
+          "brand": "테라",
+          "productName": "테라",
+          "servingType": "bottle",
+          "volumeMl": null,
+          "price": null,
+          "availabilityStatus": "available",
+          "verifiedAt": "2026-09-21"
+        },
+        {
+          "productId": "kelly",
+          "brand": "켈리",
+          "productName": "켈리",
+          "servingType": "bottle",
           "volumeMl": null,
           "price": null,
           "availabilityStatus": "available",
@@ -2495,5 +4218,5 @@
     },
     "contactEmail": null
   },
-  "generatedAt": "2026-10-19T13:46:05.760Z"
+  "generatedAt": "2026-10-19T13:52:24.383Z"
 }

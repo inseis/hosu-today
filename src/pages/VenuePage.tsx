@@ -5,7 +5,7 @@ import { kakaoDirectionsUrl, kakaoMapUrl } from '../../shared/links';
 import { isStale } from '../../shared/venue';
 import type { ParkingLot, PublicVenue } from '../../shared/types';
 import { formatStraightDistance, nearbyParking } from '../../shared/filter';
-import { featuredBeverages, featuredLabel } from '../lib/brand';
+import { brandImage, featuredBeverages, featuredLabel, sortBeverages } from '../lib/brand';
 import { BrandMark } from '../components/BrandMark';
 import { track } from '../analytics/events';
 import { MapView } from '../components/MapView';
@@ -73,7 +73,7 @@ export function VenueDetail({ venue: v, isDemo, showBeverages, contactEmail, onB
   }, [v.id, v.name, preview]);
 
   const menus = allMenus ? v.featuredMenus : v.featuredMenus.slice(0, 3);
-  const bevs = v.beverages.filter((b) => b.availabilityStatus === 'available');
+  const bevs = sortBeverages(v.beverages.filter((b) => b.availabilityStatus === 'available'));
   const unverifiedBevs = v.beverages.filter((b) => b.availabilityStatus === 'unverified');
   const stale = isStale(v.informationVerifiedAt);
   const hasCoord = v.latitude !== null && v.longitude !== null;
@@ -188,8 +188,9 @@ export function VenueDetail({ venue: v, isDemo, showBeverages, contactEmail, onB
           {bevs.length > 0 && (
             <ul className="bev-table">
               {bevs.map((b, i) => (
-                <li key={i}>
-                  <div>
+                <li key={i} className={brandImage(b) ? 'has-img' : undefined}>
+                  {brandImage(b) && <BrandMark productId={b.productId} servingType={b.servingType} imageHeight={52} />}
+                  <div className="bev-name">
                     <span className="bev-brand"><Icon name="glass" size={14} /> {b.brand}</span>
                     <strong className="bev-product">{b.productName}</strong>
                   </div>
