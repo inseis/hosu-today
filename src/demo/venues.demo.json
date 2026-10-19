@@ -1,0 +1,108 @@
+{
+  "_comment": "가상 상호로 만든 데모 데이터입니다. 실제 업소·메뉴·가격·좌표가 아닙니다. VITE_DATA_MODE=live 빌드에는 포함되지 않습니다.",
+  "venues": [
+    {
+      "id": "demo-mulbit", "slug": "demo-mulbit", "name": "[데모] 물빛식당", "area": "lakepark", "category": "한식",
+      "description": "데모용 가상 업소입니다. 점심 정식과 저녁 모임 메뉴가 있는 구성을 보여줍니다.",
+      "address": "(데모) 경기 고양시 일산동구 장항동", "addressDetail": "(데모) 1층, 공원 방향 출입구",
+      "latitude": 37.6573, "longitude": 126.7668, "kakaoPlaceId": null, "publicPhone": null,
+      "coverImage": null, "images": [], "purposeTags": ["meal", "group"],
+      "featuredMenus": [
+        { "name": "데모 정식", "price": 12000, "description": "데모 메뉴 설명", "image": null, "verifiedAt": "2026-10-01" },
+        { "name": "데모 전골(2인)", "price": null, "description": "가격 미확인 예시", "image": null, "verifiedAt": null }
+      ],
+      "weeklyHours": {
+        "mon": [{ "open": "11:00", "close": "21:30" }], "tue": [{ "open": "11:00", "close": "21:30" }],
+        "wed": [{ "open": "11:00", "close": "21:30" }], "thu": [{ "open": "11:00", "close": "21:30" }],
+        "fri": [{ "open": "11:00", "close": "22:00" }], "sat": [{ "open": "11:00", "close": "22:00" }], "sun": []
+      },
+      "breakTimes": [{ "days": ["mon", "tue", "wed", "thu", "fri"], "start": "15:00", "end": "17:00" }],
+      "temporaryClosures": [],
+      "parkingType": "building", "parkingFee": "conditional", "parkingDescription": "(데모) 건물 지하주차장, 이용 시 2시간 무료 조건 예시",
+      "parkingCapacity": null, "entranceDescription": "(데모) 공원 쪽 1층 출입구", "floor": "1층",
+      "beverages": [
+        { "productId": "cass", "brand": "카스", "productName": "카스 후레쉬", "servingType": "bottle", "volumeMl": 500, "price": null, "availabilityStatus": "available", "verifiedAt": "2026-10-01" },
+        { "productId": "cass-zero", "brand": "카스", "productName": "카스 0.0", "servingType": "bottle", "volumeMl": null, "price": null, "availabilityStatus": "unverified", "verifiedAt": null }
+      ],
+      "displayOrder": 10, "informationVerifiedAt": "2026-10-01"
+    },
+    {
+      "id": "demo-dulle", "slug": "demo-dulle", "name": "[데모] 둘레길 포차", "area": "lafesta", "category": "주점",
+      "description": "데모용 가상 업소입니다. 자정을 넘겨 영업하는 경우의 표시를 보여줍니다.",
+      "address": "(데모) 경기 고양시 일산동구 장항동 라페스타", "addressDetail": "(데모) B동 1층",
+      "latitude": 37.6604, "longitude": 126.7703, "kakaoPlaceId": null, "publicPhone": null,
+      "coverImage": null, "images": [], "purposeTags": ["light-snack", "group"],
+      "featuredMenus": [
+        { "name": "데모 모둠전", "price": 18000, "description": null, "image": null, "verifiedAt": "2026-09-20" },
+        { "name": "데모 계란말이", "price": 9000, "description": null, "image": null, "verifiedAt": "2026-09-20" }
+      ],
+      "weeklyHours": {
+        "mon": null, "tue": [{ "open": "17:00", "close": "02:00" }], "wed": [{ "open": "17:00", "close": "02:00" }],
+        "thu": [{ "open": "17:00", "close": "02:00" }], "fri": [{ "open": "17:00", "close": "03:00" }],
+        "sat": [{ "open": "16:00", "close": "03:00" }], "sun": [{ "open": "16:00", "close": "24:00" }]
+      },
+      "breakTimes": [], "temporaryClosures": [],
+      "parkingType": "public-nearby", "parkingFee": "paid", "parkingDescription": "(데모) 인근 공영주차장 이용 예시. 빈자리는 보장되지 않습니다.",
+      "parkingCapacity": null, "entranceDescription": "(데모) 라페스타 B동 중앙 통로 쪽", "floor": "1층",
+      "beverages": [
+        { "productId": "hanmac", "brand": "한맥", "productName": "한맥", "servingType": "draft", "volumeMl": 500, "price": 5000, "availabilityStatus": "available", "verifiedAt": "2026-09-20" },
+        { "productId": "hanmac", "brand": "한맥", "productName": "한맥", "servingType": "bottle", "volumeMl": 500, "price": null, "availabilityStatus": "available", "verifiedAt": "2026-09-20" },
+        { "productId": "cass", "brand": "카스", "productName": "카스 후레쉬", "servingType": "bottle", "volumeMl": null, "price": null, "availabilityStatus": "available", "verifiedAt": "2026-09-20" },
+        { "productId": "stella", "brand": "스텔라", "productName": "스텔라 아르투아", "servingType": "bottle", "volumeMl": 330, "price": null, "availabilityStatus": "available", "verifiedAt": "2026-09-20" }
+      ],
+      "displayOrder": 20, "informationVerifiedAt": "2026-09-20"
+    },
+    {
+      "id": "demo-domhwaro", "slug": "demo-domhwaro", "name": "[데모] 돔 아래 화로", "area": "westerndom", "category": "고기구이",
+      "description": "데모용 가상 업소입니다. 임시 휴무가 등록된 경우를 보여줍니다.",
+      "address": "(데모) 경기 고양시 일산동구 장항동 웨스턴돔", "addressDetail": "(데모) 2층, 엘리베이터 이용",
+      "latitude": 37.6566, "longitude": 126.7724, "kakaoPlaceId": null, "publicPhone": null,
+      "coverImage": null, "images": [], "purposeTags": ["meal", "group"],
+      "featuredMenus": [{ "name": "데모 구이 세트", "price": 32000, "description": null, "image": null, "verifiedAt": "2026-08-15" }],
+      "weeklyHours": {
+        "mon": [{ "open": "16:00", "close": "23:00" }], "tue": [{ "open": "16:00", "close": "23:00" }],
+        "wed": [{ "open": "16:00", "close": "23:00" }], "thu": [{ "open": "16:00", "close": "23:00" }],
+        "fri": [{ "open": "16:00", "close": "24:00" }], "sat": [{ "open": "12:00", "close": "24:00" }], "sun": [{ "open": "12:00", "close": "22:00" }]
+      },
+      "breakTimes": [],
+      "temporaryClosures": [{ "startDate": "2026-12-31", "endDate": "2027-01-01", "reason": "(데모) 연말 휴무 예시" }],
+      "parkingType": "building", "parkingFee": "free", "parkingDescription": "(데모) 웨스턴돔 지하주차장 예시",
+      "parkingCapacity": null, "entranceDescription": "(데모) 2층. 건물 안쪽 엘리베이터에서 내려 오른쪽", "floor": "2층",
+      "beverages": [
+        { "productId": "cass", "brand": "카스", "productName": "카스 후레쉬", "servingType": "draft", "volumeMl": 500, "price": null, "availabilityStatus": "available", "verifiedAt": "2026-08-15" },
+        { "productId": "budweiser", "brand": "버드와이저", "productName": "버드와이저", "servingType": "bottle", "volumeMl": null, "price": null, "availabilityStatus": "available", "verifiedAt": "2026-08-15" },
+        { "productId": "cass-lemon-squeeze-zero", "brand": "카스", "productName": "카스 레몬스퀴즈 제로", "servingType": "can", "volumeMl": null, "price": null, "availabilityStatus": "available", "verifiedAt": "2026-08-15" }
+      ],
+      "displayOrder": 30, "informationVerifiedAt": "2026-03-02"
+    },
+    {
+      "id": "demo-quiet", "slug": "demo-quiet", "name": "[데모] 2층 조용한 술집", "area": "lafesta", "category": "와인·요리주점",
+      "description": "데모용 가상 업소입니다. 영업시간이 일부만 확인된 경우를 보여줍니다.",
+      "address": "(데모) 경기 고양시 일산동구 장항동 라페스타", "addressDetail": "(데모) A동 2층",
+      "latitude": 37.6611, "longitude": 126.7689, "kakaoPlaceId": null, "publicPhone": null,
+      "coverImage": null, "images": [], "purposeTags": ["quiet-talk", "light-snack"],
+      "featuredMenus": [{ "name": "데모 치즈 플레이트", "price": null, "description": null, "image": null, "verifiedAt": null }],
+      "weeklyHours": {
+        "mon": null, "tue": null, "wed": null, "thu": null,
+        "fri": [{ "open": "18:00", "close": "01:00" }], "sat": [{ "open": "18:00", "close": "01:00" }], "sun": null
+      },
+      "breakTimes": [], "temporaryClosures": [],
+      "parkingType": "unknown", "parkingFee": null, "parkingDescription": null, "parkingCapacity": null,
+      "entranceDescription": "(데모) 1층 꽃집 옆 계단으로 2층", "floor": "2층",
+      "beverages": [],
+      "displayOrder": 40, "informationVerifiedAt": "2026-10-10"
+    },
+    {
+      "id": "demo-nocoord", "slug": "demo-nocoord", "name": "[데모] 좌표 확인 중인 분식", "area": "lakepark", "category": "분식",
+      "description": "데모용 가상 업소입니다. 좌표가 확인되지 않아 지도에 표시하지 않는 경우를 보여줍니다.",
+      "address": "(데모) 경기 고양시 일산동구 장항동", "addressDetail": null,
+      "latitude": null, "longitude": null, "kakaoPlaceId": null, "publicPhone": null,
+      "coverImage": null, "images": [], "purposeTags": ["meal"],
+      "featuredMenus": [{ "name": "데모 떡볶이", "price": 5000, "description": null, "image": null, "verifiedAt": "2026-10-05" }],
+      "weeklyHours": null, "breakTimes": [], "temporaryClosures": [],
+      "parkingType": "none", "parkingFee": null, "parkingDescription": "(데모) 매장 주차 불가 예시", "parkingCapacity": null,
+      "entranceDescription": null, "floor": null, "beverages": [],
+      "displayOrder": 50, "informationVerifiedAt": "2026-10-05"
+    }
+  ]
+}

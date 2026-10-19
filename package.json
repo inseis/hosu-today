@@ -1,0 +1,52 @@
+{
+  "name": "hosu-today",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "concurrently -k -n api,web \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:web": "vite",
+    "dev:api": "tsx watch server/index.ts",
+    "build": "tsc --noEmit && vite build && npm run check:privacy",
+    "start": "NODE_ENV=production tsx server/index.ts",
+    "preview:static": "vite preview",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "check:privacy": "tsx scripts/check-privacy.ts",
+    "admin:hash": "tsx scripts/hash-password.ts",
+    "export:public": "tsx scripts/export-public.ts",
+    "qr:verify": "tsx scripts/verify-qr.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "express": "^4.22.3",
+    "jsqr": "^1.4.0",
+    "papaparse": "^5.7.0",
+    "qrcode": "^1.5.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.6"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.10",
+    "@types/express": "^4.17.25",
+    "@types/node": "^26.6.5",
+    "@types/papaparse": "^5.5.2",
+    "@types/pngjs": "^6.0.5",
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "@vitejs/plugin-react": "^4.7.0",
+    "concurrently": "^10.0.6",
+    "playwright": "^1.64.1",
+    "pngjs": "^7.0.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^5.4.21",
+    "vitest": "^2.1.9"
+  },
+  "private": true
+}

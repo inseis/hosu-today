@@ -1,0 +1,9 @@
+{
+  "name": "호수공원 옆, 오늘의 한 곳",
+  "short_name": "오늘의 한 곳",
+  "start_url": "./explore?source=homescreen",
+  "display": "standalone",
+  "background_color": "#FAF8F3",
+  "theme_color": "#FAF8F3",
+  "icons": [{ "src": "./icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

@@ -1,0 +1,57 @@
+# GitHub Pages 배포: main에 push하면 테스트 → 빌드 → 배포
+# 카카오 JavaScript 키는 저장소 Variables(VITE_KAKAO_MAP_JAVASCRIPT_KEY)에서 주입한다.
+# (JavaScript 키는 브라우저에 노출되는 키이며, 카카오 콘솔의 JavaScript SDK 도메인 제한으로 보호한다.
+#  REST API 키·Admin 키는 이 저장소·워크플로 어디에도 넣지 않는다.)
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - name: Build
+        env:
+          VITE_BASE_PATH: /${{ github.event.repository.name }}/
+          # GitHub Pages에는 서버(관리자·제보·집계)가 없으므로 데모 데이터로 공개.
+          # 실제 업소를 공개할 때는 live + VITE_PUBLIC_DATA_URL=/data/public.json 으로 바꾼다 (docs/DEPLOY.md).
+          VITE_DATA_MODE: ${{ vars.VITE_DATA_MODE || 'demo' }}
+          VITE_PUBLIC_DATA_URL: ${{ vars.VITE_PUBLIC_DATA_URL }}
+          VITE_KAKAO_MAP_JAVASCRIPT_KEY: ${{ vars.VITE_KAKAO_MAP_JAVASCRIPT_KEY }}
+          VITE_PUBLIC_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+          VITE_SITE_NAME: 호수공원 옆, 오늘의 한 곳
+        run: npm run build
+      # SPA 직접 접속(/venues/... 새로고침)을 위해 404.html로 같은 앱 제공
+      - run: cp dist/index.html dist/404.html
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

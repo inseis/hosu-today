@@ -1,0 +1,12 @@
+node_modules
+dist
+.env
+.env.local
+.env.*.local
+# 운영 저장소(실제 업소·비공개 운영 데이터)는 저장소에 커밋하지 않음
+data/store/*
+!data/store/.gitkeep
+# 내부 원본 영업 파일은 이 프로젝트에 두지 않음
+data/private
+test-results
+screenshots/tmp

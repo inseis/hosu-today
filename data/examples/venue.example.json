@@ -1,0 +1,141 @@
+{
+  "_comment": "Venue(공개 데이터) 입력 예시. 실제 업소 정보가 아닙니다. null = 미확인.",
+  "venue": {
+    "id": "example-venue",
+    "slug": "example-venue",
+    "name": "예시 업소",
+    "area": "lafesta",
+    "category": "주점",
+    "description": "(예시) 업소가 확인한 소개",
+    "address": "(데모) 경기 고양시 일산동구 장항동 라페스타",
+    "addressDetail": "(데모) B동 1층",
+    "latitude": 37.6604,
+    "longitude": 126.7703,
+    "kakaoPlaceId": null,
+    "publicPhone": null,
+    "coverImage": null,
+    "images": [],
+    "purposeTags": [
+      "light-snack",
+      "group"
+    ],
+    "featuredMenus": [
+      {
+        "name": "데모 모둠전",
+        "price": 18000,
+        "description": null,
+        "image": null,
+        "verifiedAt": "2026-09-20"
+      },
+      {
+        "name": "데모 계란말이",
+        "price": 9000,
+        "description": null,
+        "image": null,
+        "verifiedAt": "2026-09-20"
+      }
+    ],
+    "weeklyHours": {
+      "mon": null,
+      "tue": [
+        {
+          "open": "17:00",
+          "close": "02:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "17:00",
+          "close": "02:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "17:00",
+          "close": "02:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "17:00",
+          "close": "03:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "16:00",
+          "close": "03:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "16:00",
+          "close": "24:00"
+        }
+      ]
+    },
+    "breakTimes": [],
+    "temporaryClosures": [],
+    "parkingType": "public-nearby",
+    "parkingFee": "paid",
+    "parkingDescription": "(데모) 인근 공영주차장 이용 예시. 빈자리는 보장되지 않습니다.",
+    "parkingCapacity": null,
+    "entranceDescription": "(데모) 라페스타 B동 중앙 통로 쪽",
+    "floor": "1층",
+    "beverages": [
+      {
+        "productId": "hanmac",
+        "brand": "한맥",
+        "productName": "한맥",
+        "servingType": "draft",
+        "volumeMl": 500,
+        "price": 5000,
+        "availabilityStatus": "available",
+        "verifiedAt": "2026-09-20"
+      },
+      {
+        "productId": "hanmac",
+        "brand": "한맥",
+        "productName": "한맥",
+        "servingType": "bottle",
+        "volumeMl": 500,
+        "price": null,
+        "availabilityStatus": "available",
+        "verifiedAt": "2026-09-20"
+      },
+      {
+        "productId": "cass",
+        "brand": "카스",
+        "productName": "카스 후레쉬",
+        "servingType": "bottle",
+        "volumeMl": null,
+        "price": null,
+        "availabilityStatus": "available",
+        "verifiedAt": "2026-09-20"
+      },
+      {
+        "productId": "stella",
+        "brand": "스텔라",
+        "productName": "스텔라 아르투아",
+        "servingType": "bottle",
+        "volumeMl": 330,
+        "price": null,
+        "availabilityStatus": "available",
+        "verifiedAt": "2026-09-20"
+      }
+    ],
+    "displayOrder": 20,
+    "informationVerifiedAt": "2026-09-20",
+    "isPublished": false
+  },
+  "ops": {
+    "_comment": "비공개 운영 데이터 — 공개 API·번들에 포함되지 않음",
+    "venueId": "example-venue",
+    "consentStatus": "pending",
+    "consentRecordedAt": null,
+    "reviewStatus": "draft",
+    "verificationEvidence": "(예시) 2026-10-01 매장 방문, 메뉴판 사진 보관",
+    "staffNote": null,
+    "updatedAt": "2026-10-01T00:00:00.000Z"
+  }
+}
