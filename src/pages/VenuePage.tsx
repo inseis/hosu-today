@@ -174,7 +174,7 @@ export function VenueDetail({ venue: v, isDemo, showBeverages, contactEmail, onB
           <h2 id="sec-use">이용 정보</h2>
           <ul className="tag-row">
             {v.purposeTags.map((t) => (
-              <li key={t} className="tag"><span aria-hidden="true">{purpose(t).icon}</span> {purpose(t).label}</li>
+              <li key={t} className="tag">{purpose(t).label}</li>
             ))}
           </ul>
           <p className="muted small">업소가 확인한 이용 목적입니다.</p>

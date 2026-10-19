@@ -1,0 +1,75 @@
+/* Hallmark · tokens · genre: editorial · theme: custom (vibe: "동네 안내지, 호숫가 종이, 카스 블루 한 점")
+ * paper oklch(97.4% 0.010 85) · accent oklch(46% 0.150 262) cass-blue
+ * display: Noto Serif KR 700 · body: Pretendard Variable
+ * axes: light / roman-serif / cool
+ */
+:root {
+  /* paper & ink */
+  --color-paper: oklch(97.4% 0.010 85);
+  --color-paper-2: oklch(94.6% 0.014 85);
+  --color-surface: oklch(99.2% 0.005 85);
+  --color-ink: oklch(25% 0.045 265);
+  --color-ink-2: oklch(38% 0.035 265);
+  --color-muted: oklch(51% 0.022 265);
+  --color-rule: oklch(87.5% 0.014 85);
+  --color-rule-strong: oklch(25% 0.045 265);
+
+  /* single brand accent (카스 블루) */
+  --color-accent: oklch(46% 0.150 262);
+  --color-accent-ink: oklch(98.5% 0.006 262);
+  --color-accent-soft: oklch(94.5% 0.028 262);
+  --color-focus: oklch(55% 0.170 262);
+
+  /* product hues — used only beside their product */
+  --color-cass: oklch(46% 0.150 262);
+  --color-cass-zero: oklch(55% 0.110 235);
+  --color-hanmac: oklch(55% 0.110 75);
+  --color-bottle-gold: oklch(78% 0.130 85);
+
+  /* status */
+  --color-open: oklch(50% 0.120 150);
+  --color-closed: oklch(50% 0.100 60);
+  --color-danger: oklch(52% 0.180 27);
+  --color-warn-bg: oklch(96.2% 0.040 85);
+  --color-warn-rule: oklch(85% 0.080 85);
+
+  /* map */
+  --color-parking-public: oklch(52% 0.140 245);
+  --color-parking-building: oklch(50% 0.025 265);
+  --color-me: oklch(58% 0.170 255);
+  --color-highlight: oklch(82% 0.140 85);
+  --color-scrim: oklch(25% 0.045 265 / 0.42);
+  --color-shadow: oklch(25% 0.045 265 / 0.14);
+
+  /* type */
+  --font-display: 'Noto Serif KR', 'Apple SD Gothic Neo', serif;
+  --font-body: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  --text-2xs: 0.72rem;
+  --text-xs: 0.8rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+
+  /* 4-pt spacing */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+
+  /* shape & motion */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-pill: 999px;
+  --rule: 1px solid var(--color-rule);
+  --rule-strong: 2px solid var(--color-rule-strong);
+  --tap: 44px;
+  --toolbar-h: 56px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-short: 160ms;
+}

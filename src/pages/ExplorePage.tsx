@@ -118,6 +118,17 @@ function Explore({ data }: { data: PublicDataset }) {
     if (!filter.bounds) mapRef.current?.fitTo(results);
   }, [filter.area, filter.bounds, results]);
 
+  /** 카드의 '근처 주차장' → 주차장 레이어를 켜고 가장 가까운 주차장을 선택해 보여준다 */
+  const showParkingFor = (v: PublicVenue) => {
+    const nearest = nearbyParking(v, data.parking)[0];
+    setShowParking(true);
+    setSelectedId(v.id);
+    setParkingId(nearest?.lot.id ?? null);
+    if (view === 'list') setView('split');
+    if (hasCoords(v)) mapRef.current?.panTo(v.latitude, v.longitude, 3);
+    document.querySelector('.toolbar')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   const selectFromMap = (id: string) => {
     setSelectedId(id);
     if (view !== 'map') cardRefs.current.get(id)?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -194,17 +205,16 @@ function Explore({ data }: { data: PublicDataset }) {
             />
           </label>
 
-          <div className="chip-row" role="radiogroup" aria-label="지역">
+          <div className="area-tabs" role="radiogroup" aria-label="지역">
             {[{ id: 'all', label: '전체' }, ...catalog.areas].map((a) => (
               <button
                 key={a.id}
                 type="button"
                 role="radio"
                 aria-checked={filter.area === a.id}
-                className={`chip${filter.area === a.id ? ' is-on' : ''}`}
+                className={`area-tab${filter.area === a.id ? ' is-on' : ''}`}
                 onClick={() => setFilter({ area: a.id as AreaId | 'all' })}
               >
-                {filter.area === a.id && <Icon name="check" size={15} />}
                 {a.label}
               </button>
             ))}
@@ -215,7 +225,7 @@ function Explore({ data }: { data: PublicDataset }) {
               const on = filter.purposes.includes(p.id as PurposeTag);
               return (
                 <button key={p.id} type="button" aria-pressed={on} className={`chip${on ? ' is-on' : ''}`} onClick={() => setFilter({ purposes: toggleIn(filter.purposes, p.id as PurposeTag) })}>
-                  <span aria-hidden="true">{p.icon}</span>
+                  {on && <Icon name="check" size={14} />}
                   {p.label}
                 </button>
               );
@@ -229,7 +239,7 @@ function Explore({ data }: { data: PublicDataset }) {
                 카스·한맥 있는 곳
               </button>
             )}
-            <button type="button" aria-pressed={filter.parking} className={`chip${filter.parking ? ' is-on' : ''}`} onClick={() => setFilter({ parking: !filter.parking })}>
+            <button type="button" aria-pressed={filter.parking} className={`chip${filter.parking ? ' is-on' : ''}`} onClick={() => { const next = !filter.parking; setFilter({ parking: next }); if (next) setShowParking(true); }}>
               <Icon name="car" size={15} />
               주차 가능
             </button>
@@ -310,6 +320,7 @@ function Explore({ data }: { data: PublicDataset }) {
                 showBeverages={showBev}
                 detailSearch={sourceSearch}
                 nearbyParkingCount={nearCount.get(v.id) ?? 0}
+                onShowParking={() => showParkingFor(v)}
                 onSelect={() => setSelectedId(v.id)}
               />
             ))

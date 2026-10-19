@@ -137,9 +137,11 @@ export const MapView = forwardRef<MapHandle, Props>(function MapView(
             node.appendChild(img);
           }
         } else {
+          // 제품 이미지가 없는 조합(카스 생맥주 등): 맥주잔 아이콘 (색은 CSS 토큰)
           const icon = document.createElement('span');
           icon.className = 'map-marker-icon';
           icon.setAttribute('aria-hidden', 'true');
+          icon.textContent = '생';
           node.appendChild(icon);
         }
       }
@@ -187,6 +189,8 @@ export const MapView = forwardRef<MapHandle, Props>(function MapView(
     if (!ready || !map || !kakao) return;
     parkingOverlays.current.forEach(({ overlay }) => overlay.setMap(null));
     parkingOverlays.current.clear();
+    // 주차장을 켜면 업소 이름표를 점으로 줄여 P 마커가 가려지지 않게 한다
+    if (el.current) el.current.dataset.parking = showParking ? 'on' : 'off';
     if (!showParking) return;
     for (const p of parking) {
       const node = document.createElement('button');
@@ -199,7 +203,8 @@ export const MapView = forwardRef<MapHandle, Props>(function MapView(
         ev.stopPropagation();
         onParkingRef.current?.(p.id);
       });
-      const overlay = new kakao.maps.CustomOverlay({ position: new kakao.maps.LatLng(p.latitude, p.longitude), content: node, clickable: true, zIndex: 2 });
+      // 업소 마커(1~3)보다 위, 선택된 업소(10)보다 아래
+      const overlay = new kakao.maps.CustomOverlay({ position: new kakao.maps.LatLng(p.latitude, p.longitude), content: node, clickable: true, zIndex: 6 });
       overlay.setMap(map);
       parkingOverlays.current.set(p.id, { overlay, node });
     }
@@ -209,7 +214,7 @@ export const MapView = forwardRef<MapHandle, Props>(function MapView(
     parkingOverlays.current.forEach(({ overlay, node }, id) => {
       const on = id === selectedParkingId;
       node.classList.toggle('is-selected', on);
-      overlay.setZIndex(on ? 9 : 2);
+      overlay.setZIndex(on ? 9 : 6);
     });
   }, [selectedParkingId, showParking, parking, ready]);
 

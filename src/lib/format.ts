@@ -2,7 +2,7 @@ import catalog from '../../data/catalog/catalog.json';
 import type { AreaId, ParkingType, PurposeTag, ServingType } from '../../shared/types';
 
 export const areaLabel = (a: AreaId) => catalog.areas.find((x) => x.id === a)?.label ?? a;
-export const purpose = (p: PurposeTag) => catalog.purposes.find((x) => x.id === p) ?? { id: p, label: p, icon: '' };
+export const purpose = (p: PurposeTag) => catalog.purposes.find((x) => x.id === p) ?? { id: p, label: p };
 
 export function price(n: number | null): string | null {
   return n === null ? null : `${n.toLocaleString('ko-KR')}원`;

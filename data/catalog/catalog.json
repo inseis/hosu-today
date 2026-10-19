@@ -17,23 +17,19 @@
   "purposes": [
     {
       "id": "meal",
-      "label": "식사하기",
-      "icon": "🍚"
+      "label": "식사하기"
     },
     {
       "id": "light-snack",
-      "label": "가벼운 안주",
-      "icon": "🥢"
+      "label": "가벼운 안주"
     },
     {
       "id": "group",
-      "label": "여럿이 모이기",
-      "icon": "👥"
+      "label": "여럿이 모이기"
     },
     {
       "id": "quiet-talk",
-      "label": "조용히 대화하기",
-      "icon": "💬"
+      "label": "조용히 대화하기"
     }
   ],
   "beverageProducts": [

@@ -6,18 +6,18 @@ import type { PublicVenue } from './types';
 // - 음료: 업소가 취급을 확인한(available) 제품만
 // 인기·평점은 쓰지 않는다.
 
-export interface FoodPref { id: string; label: string; icon: string; words: string[] }
+export interface FoodPref { id: string; label: string; words: string[] }
 export interface DrinkPref { id: string; label: string }
 
 export const FOOD_PREFS: FoodPref[] = [
-  { id: 'meat', label: '고기·구이', icon: '🥩', words: ['고기', '갈비', '삼겹', '돼지', '돗', '돈', '구이', '백정', '대패', '냉삼', '한우', '미돈', '소갈비'] },
-  { id: 'gopchang', label: '곱창·막창', icon: '🔥', words: ['곱창', '막창', '곱새', '낙곱'] },
-  { id: 'soup', label: '국물·찌개', icon: '🍲', words: ['탕', '찌개', '전골', '복국', '부대', '감자탕'] },
-  { id: 'seafood', label: '해산물', icon: '🦀', words: ['해물', '조개', '대게', '어시장', '동해안', '스시', '쭈낙', '뻘', '횟집'] },
-  { id: 'chicken', label: '치킨·닭', icon: '🍗', words: ['치킨', '닭', '통닭', '호프'] },
-  { id: 'jokbal', label: '족발', icon: '🐷', words: ['족발'] },
-  { id: 'chinese', label: '중식·양꼬치', icon: '🥟', words: ['중식', '짜장', '양꼬치', '금문', '아시안'] },
-  { id: 'light', label: '가볍게 한 끼', icon: '🍜', words: ['우동', '텐동', '만두', '밥상', '국수', '양식'] },
+  { id: 'meat', label: '고기·구이', words: ['고기', '갈비', '삼겹', '돼지', '돗', '돈', '구이', '백정', '대패', '냉삼', '한우', '미돈', '소갈비'] },
+  { id: 'gopchang', label: '곱창·막창', words: ['곱창', '막창', '곱새', '낙곱'] },
+  { id: 'soup', label: '국물·찌개', words: ['탕', '찌개', '전골', '복국', '부대', '감자탕'] },
+  { id: 'seafood', label: '해산물', words: ['해물', '조개', '대게', '어시장', '동해안', '스시', '쭈낙', '뻘', '횟집'] },
+  { id: 'chicken', label: '치킨·닭', words: ['치킨', '닭', '통닭', '호프'] },
+  { id: 'jokbal', label: '족발', words: ['족발'] },
+  { id: 'chinese', label: '중식·양꼬치', words: ['중식', '짜장', '양꼬치', '금문', '아시안'] },
+  { id: 'light', label: '가볍게 한 끼', words: ['우동', '텐동', '만두', '밥상', '국수', '양식'] },
 ];
 
 export const DRINK_PREFS: DrinkPref[] = [

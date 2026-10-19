@@ -32,11 +32,11 @@ export function Recommender({ venues, showBeverages, detailSearch, onShowOnMap }
   if (!open) {
     return (
       <button type="button" className="reco-open" onClick={() => setOpen(true)}>
-        <span className="reco-open-emoji" aria-hidden="true">🤔</span>
-        <span>
+        <span className="reco-open-text">
           <strong>뭐 먹을지 모르겠다면?</strong>
-          <span className="small muted"> 땡기는 음식·술을 고르면 골라드려요</span>
+          <span className="small muted">땡기는 음식·술을 고르면 세 곳을 골라드려요</span>
         </span>
+        <span className="reco-open-arrow" aria-hidden="true">→</span>
       </button>
     );
   }
@@ -51,7 +51,7 @@ export function Recommender({ venues, showBeverages, detailSearch, onShowOnMap }
       <div className="chip-row reco-chips">
         {FOOD_PREFS.map((f) => (
           <button key={f.id} type="button" aria-pressed={food === f.id} className={`chip${food === f.id ? ' is-on' : ''}`} onClick={() => choose('food', f.id)}>
-            <span aria-hidden="true">{f.icon}</span>{f.label}
+            {f.label}
           </button>
         ))}
       </div>
@@ -79,7 +79,7 @@ export function Recommender({ venues, showBeverages, detailSearch, onShowOnMap }
                     <div className="reco-item-main">
                       <strong>{v.name}</strong>
                       <span className="small muted">{v.category}</span>
-                      <span className="small reco-reason">✔ {reasons.join(' · ')}</span>
+                      <span className="small reco-reason">{reasons.join(' · ')}</span>
                     </div>
                     {feat.length > 0 && (
                       <span className="reco-bottles" aria-label={feat.map((b) => b.productName).join(', ')}>
@@ -96,7 +96,7 @@ export function Recommender({ venues, showBeverages, detailSearch, onShowOnMap }
             </ol>
           )}
           <div className="reco-foot">
-            <button type="button" className="btn btn-small btn-secondary" onClick={() => setSeed((s) => s + 7)}>🔄 다른 곳 보기</button>
+            <button type="button" className="btn btn-small btn-secondary" onClick={() => setSeed((s) => s + 7)}>다른 곳 보기</button>
             <span className="small muted">업소명·업종과 확인된 음료 정보로 고른 결과예요. 순위가 아니에요.</span>
           </div>
         </div>

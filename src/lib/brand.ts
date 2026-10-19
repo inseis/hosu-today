@@ -4,10 +4,11 @@ import type { Beverage, PublicVenue } from '../../shared/types';
 
 export const FEATURED_PRODUCTS = ['cass', 'cass-zero', 'hanmac'] as const;
 
+/** tokens.css의 제품 색 토큰 */
 export const BRAND_COLOR: Record<string, string> = {
-  cass: '#1f4fa0',
-  'cass-zero': '#1f7fae',
-  hanmac: '#a87420',
+  cass: 'var(--color-cass)',
+  'cass-zero': 'var(--color-cass-zero)',
+  hanmac: 'var(--color-hanmac)',
 };
 
 /** 강조 띠·지도 강조 마커 대상: 카스 생맥주·카스 0.00·한맥 (카스 병은 대부분 업소가 취급해 은은하게만 표시) */
