@@ -1,6 +1,7 @@
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { hasCoords, type Bounds } from '../../shared/filter';
-import type { PublicVenue } from '../../shared/types';
+import type { ParkingLot, PublicVenue } from '../../shared/types';
+import { isFeatured } from '../lib/brand';
 import { KakaoError, kakaoErrorMessage, loadKakaoMaps, type KakaoLoadError } from '../lib/kakaoLoader';
 import type { PublicConfig } from '../data/api';
 
@@ -21,12 +22,17 @@ interface Props {
   /** 지도 상태를 저장할 sessionStorage 키 (상세 화면 다녀와도 위치 유지) */
   persistKey?: string;
   onStatus?(status: 'ready' | KakaoLoadError): void;
+  /** 주변 주차장 레이어 */
+  parking?: ParkingLot[];
+  showParking?: boolean;
+  selectedParkingId?: string | null;
+  onParkingSelect?(id: string): void;
 }
 
 const VIEW_KEY_PREFIX = 'ht_map_view:';
 
 export const MapView = forwardRef<MapHandle, Props>(function MapView(
-  { venues, selectedId, onSelect, center, myLocation, persistKey, onStatus },
+  { venues, selectedId, onSelect, center, myLocation, persistKey, onStatus, parking = [], showParking = false, selectedParkingId = null, onParkingSelect },
   ref,
 ) {
   const el = useRef<HTMLDivElement>(null);
@@ -35,6 +41,9 @@ export const MapView = forwardRef<MapHandle, Props>(function MapView(
   const meOverlay = useRef<any>(null);
   const onSelectRef = useRef(onSelect);
   onSelectRef.current = onSelect;
+  const onParkingRef = useRef(onParkingSelect);
+  onParkingRef.current = onParkingSelect;
+  const parkingOverlays = useRef(new Map<string, { overlay: any; node: HTMLButtonElement }>());
   const [error, setError] = useState<KakaoLoadError | null>(null);
   const [ready, setReady] = useState(false);
 
@@ -53,6 +62,10 @@ export const MapView = forwardRef<MapHandle, Props>(function MapView(
         });
         map.addControl(new kakao.maps.ZoomControl(), kakao.maps.ControlPosition.RIGHT);
         mapRef.current = map;
+        // 멀리 보면 이름표 대신 점으로 (강조 업소는 이름 유지) — 마커 겹침 완화
+        const syncZoom = () => { if (el.current) el.current.dataset.zoom = map.getLevel() >= 4 ? 'far' : 'near'; };
+        syncZoom();
+        kakao.maps.event.addListener(map, 'zoom_changed', syncZoom);
         if (!saved) fit(map, venues);
         if (persistKey) {
           idleHandler = () => {
@@ -86,6 +99,8 @@ export const MapView = forwardRef<MapHandle, Props>(function MapView(
       if (idleHandler && mapRef.current && kakao) kakao.maps.event.removeListener(mapRef.current, 'idle', idleHandler);
       overlays.current.forEach(({ overlay }) => overlay.setMap(null));
       overlays.current.clear();
+      parkingOverlays.current.forEach(({ overlay }) => overlay.setMap(null));
+      parkingOverlays.current.clear();
       meOverlay.current?.setMap(null);
       mapRef.current = null;
     };
@@ -108,9 +123,19 @@ export const MapView = forwardRef<MapHandle, Props>(function MapView(
       if (overlays.current.has(id)) return;
       const node = document.createElement('button');
       node.type = 'button';
-      node.className = 'map-marker';
-      node.textContent = v.name; // textContent: 사용자 입력을 HTML로 해석하지 않음
-      node.setAttribute('aria-label', `${v.name} 선택`);
+      const featured = isFeatured(v);
+      node.className = featured ? 'map-marker is-featured' : 'map-marker';
+      if (featured) {
+        const icon = document.createElement('span');
+        icon.className = 'map-marker-icon';
+        icon.setAttribute('aria-hidden', 'true');
+        node.appendChild(icon);
+      }
+      const label = document.createElement('span');
+      label.className = 'map-marker-label';
+      label.textContent = v.name; // textContent: 사용자 입력을 HTML로 해석하지 않음
+      node.appendChild(label);
+      node.setAttribute('aria-label', `${v.name} 선택${featured ? ' (카스·한맥 취급)' : ''}`);
       node.addEventListener('click', (ev) => {
         ev.stopPropagation();
         onSelectRef.current(id);
@@ -120,6 +145,7 @@ export const MapView = forwardRef<MapHandle, Props>(function MapView(
         content: node,
         yAnchor: 1.15,
         clickable: true,
+        zIndex: featured ? 3 : 1,
       });
       overlay.setMap(map);
       overlays.current.set(id, { overlay, node });
@@ -132,7 +158,7 @@ export const MapView = forwardRef<MapHandle, Props>(function MapView(
       const on = id === selectedId;
       node.classList.toggle('is-selected', on);
       node.setAttribute('aria-pressed', String(on));
-      overlay.setZIndex(on ? 10 : 1);
+      overlay.setZIndex(on ? 10 : node.classList.contains('is-featured') ? 3 : 1);
     });
     const map = mapRef.current;
     const sel = selectedId ? overlays.current.get(selectedId) : null;
@@ -141,6 +167,39 @@ export const MapView = forwardRef<MapHandle, Props>(function MapView(
       if (!map.getBounds().contain(pos)) map.panTo(pos);
     }
   }, [selectedId, ready, venues]);
+
+  // 주차장 레이어
+  useEffect(() => {
+    const kakao = window.kakao;
+    const map = mapRef.current;
+    if (!ready || !map || !kakao) return;
+    parkingOverlays.current.forEach(({ overlay }) => overlay.setMap(null));
+    parkingOverlays.current.clear();
+    if (!showParking) return;
+    for (const p of parking) {
+      const node = document.createElement('button');
+      node.type = 'button';
+      node.className = `map-parking map-parking-${p.kind}`;
+      node.textContent = 'P';
+      node.title = p.name;
+      node.setAttribute('aria-label', `${p.kind === 'public' ? '공영주차장' : '건물 주차장'}: ${p.name}`);
+      node.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        onParkingRef.current?.(p.id);
+      });
+      const overlay = new kakao.maps.CustomOverlay({ position: new kakao.maps.LatLng(p.latitude, p.longitude), content: node, clickable: true, zIndex: 2 });
+      overlay.setMap(map);
+      parkingOverlays.current.set(p.id, { overlay, node });
+    }
+  }, [parking, showParking, ready]);
+
+  useEffect(() => {
+    parkingOverlays.current.forEach(({ overlay, node }, id) => {
+      const on = id === selectedParkingId;
+      node.classList.toggle('is-selected', on);
+      overlay.setZIndex(on ? 9 : 2);
+    });
+  }, [selectedParkingId, showParking, parking, ready]);
 
   // 내 위치 표시 (화면에만, 저장·전송 안 함)
   useEffect(() => {

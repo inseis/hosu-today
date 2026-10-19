@@ -3,7 +3,10 @@ import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { DAY_LABELS, formatDayHours, WEEK_ORDER } from '../../shared/hours';
 import { kakaoDirectionsUrl, kakaoMapUrl } from '../../shared/links';
 import { isStale } from '../../shared/venue';
-import type { PublicVenue } from '../../shared/types';
+import type { ParkingLot, PublicVenue } from '../../shared/types';
+import { formatStraightDistance, nearbyParking } from '../../shared/filter';
+import { featuredBeverages, featuredLabel } from '../lib/brand';
+import { BrandMark } from '../components/BrandMark';
 import { track } from '../analytics/events';
 import { MapView } from '../components/MapView';
 import { beverageText, DemoBanner, Icon, Notice, OpenBadge, VenueImage } from '../components/ui';
@@ -35,7 +38,7 @@ export function VenuePage() {
       </main>
     );
   }
-  return <VenueDetail venue={venue} isDemo={ds.data.isDemo} showBeverages={ds.data.config.showBeverageInfo} contactEmail={ds.data.config.contactEmail} onBack={back} />;
+  return <VenueDetail venue={venue} isDemo={ds.data.isDemo} showBeverages={ds.data.config.showBeverageInfo} contactEmail={ds.data.config.contactEmail} onBack={back} parking={ds.data.parking} />;
 }
 
 /** 탐색 화면에서 들어왔으면 뒤로 가기(필터·지도 상태 유지), 직접 접속이면 탐색 화면으로 */
@@ -53,9 +56,10 @@ interface DetailProps {
   onBack?: () => void;
   /** 관리자 미리보기: 이벤트·제보 비활성 */
   preview?: boolean;
+  parking?: ParkingLot[];
 }
 
-export function VenueDetail({ venue: v, isDemo, showBeverages, contactEmail, onBack, preview }: DetailProps) {
+export function VenueDetail({ venue: v, isDemo, showBeverages, contactEmail, onBack, preview, parking = [] }: DetailProps) {
   const [allMenus, setAllMenus] = useState(false);
   const [shareMsg, setShareMsg] = useState<string | null>(null);
   const opened = useRef(false);
@@ -73,6 +77,8 @@ export function VenueDetail({ venue: v, isDemo, showBeverages, contactEmail, onB
   const unverifiedBevs = v.beverages.filter((b) => b.availabilityStatus === 'unverified');
   const stale = isStale(v.informationVerifiedAt);
   const hasCoord = v.latitude !== null && v.longitude !== null;
+  const featured = showBeverages ? featuredBeverages(v) : [];
+  const lots = nearbyParking(v, parking, 400).slice(0, 4);
 
   const share = async () => {
     if (preview) return;
@@ -113,6 +119,16 @@ export function VenueDetail({ venue: v, isDemo, showBeverages, contactEmail, onB
         <h1 className="detail-title">{v.name}</h1>
         {/* 2. 소개 */}
         {v.description && <p className="detail-desc">{v.description}</p>}
+        {featured.length > 0 && (
+          <div className="detail-featured">
+            <span className="featured-ribbon-title">카스·한맥 취급</span>
+            <ul className="featured-list">
+              {featured.map((b, i) => (
+                <li key={i} className={`featured-chip brand-${b.productId}`}><BrandMark productId={b.productId} size={20} />{featuredLabel(b)}</li>
+              ))}
+            </ul>
+          </div>
+        )}
         <div className="detail-quick">
           <a className="btn btn-primary" href={kakaoDirectionsUrl(v)} target="_blank" rel="noopener noreferrer" onClick={() => !preview && track('directions_click', { venueId: v.id })}>
             <Icon name="route" /> 카카오맵 길찾기
@@ -228,6 +244,24 @@ export function VenueDetail({ venue: v, isDemo, showBeverages, contactEmail, onB
         {v.parkingDescription && <p>{v.parkingDescription}</p>}
         {v.parkingCapacity !== null && <p>주차 가능 대수: {v.parkingCapacity}대</p>}
         {v.parkingType !== 'none' && v.parkingType !== 'unknown' && <p className="muted small">주차 가능은 빈자리를 보장하지 않습니다.</p>}
+        {lots.length > 0 && (
+          <div className="nearby-parking">
+            <p className="fact-line"><strong>가까운 주차장</strong></p>
+            <ul>
+              {lots.map(({ lot, meters }) => (
+                <li key={lot.id}>
+                  <span className={`p-mark p-${lot.kind}`} aria-hidden="true">P</span>
+                  <div className="nearby-parking-text">
+                    <span>{lot.name}</span>
+                    <span className="muted small">{lot.kind === 'public' ? '공영' : '건물·오피스텔'} · {formatStraightDistance(meters)}</span>
+                  </div>
+                  <a className="btn btn-small btn-ghost" href={kakaoDirectionsUrl({ name: lot.name, latitude: lot.latitude, longitude: lot.longitude, kakaoPlaceId: lot.kakaoPlaceId, address: lot.address })} target="_blank" rel="noopener noreferrer">길찾기</a>
+                </li>
+              ))}
+            </ul>
+            <p className="muted small">카카오맵 주차장 정보 기준({lots[0].lot.collectedAt} 수집). 요금·운영시간·빈자리는 확인되지 않았습니다.</p>
+          </div>
+        )}
         <p className="fact-line"><Icon name="door" /> <strong>입구</strong></p>
         <p>{v.entranceDescription ?? <span className="muted">입구 안내 확인 중</span>}</p>
       </section>

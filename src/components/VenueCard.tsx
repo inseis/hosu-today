@@ -4,6 +4,8 @@ import { formatStraightDistance } from '../../shared/filter';
 import type { PublicVenue } from '../../shared/types';
 import { areaLabel, PARKING_LABEL, price, purpose } from '../lib/format';
 import { BeverageBadges, Icon, OpenBadge, VenueImage } from './ui';
+import { BrandMark } from './BrandMark';
+import { featuredBeverages, featuredLabel } from '../lib/brand';
 
 interface Props {
   venue: PublicVenue;
@@ -13,16 +15,32 @@ interface Props {
   onSelect(): void;
   /** 상세 링크에 붙일 쿼리 (source 등) */
   detailSearch: string;
+  /** 300m 이내 주차장 수 */
+  nearbyParkingCount: number;
 }
 
 export const VenueCard = forwardRef<HTMLElement, Props>(function VenueCard(
-  { venue: v, selected, distanceM, showBeverages, onSelect, detailSearch },
+  { venue: v, selected, distanceM, showBeverages, onSelect, detailSearch, nearbyParkingCount },
   ref,
 ) {
   const menu = v.featuredMenus[0];
   const menuPrice = menu ? price(menu.price) : null;
+  const featured = showBeverages ? featuredBeverages(v) : [];
   return (
-    <article ref={ref} className={`venue-card${selected ? ' is-selected' : ''}`} aria-current={selected || undefined}>
+    <article ref={ref} className={`venue-card${selected ? ' is-selected' : ''}${featured.length ? ' is-featured' : ''}`} aria-current={selected || undefined}>
+      {featured.length > 0 && (
+        <div className="featured-ribbon">
+          <span className="featured-ribbon-title">카스·한맥 취급</span>
+          <ul className="featured-list">
+            {featured.map((b, i) => (
+              <li key={`${b.productId}-${b.servingType}-${i}`} className={`featured-chip brand-${b.productId}`}>
+                <BrandMark productId={b.productId} size={18} />
+                {featuredLabel(b)}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
       <button type="button" className="venue-card-hit" onClick={onSelect} aria-label={`${v.name} 지도에서 보기`}>
         <VenueImage src={v.coverImage} alt={v.name} className="venue-card-img" />
         <div className="venue-card-body">
@@ -50,7 +68,7 @@ export const VenueCard = forwardRef<HTMLElement, Props>(function VenueCard(
             <OpenBadge venue={v} />
             <span className="fact">
               <Icon name="car" size={14} />
-              {PARKING_LABEL[v.parkingType]}
+              {v.parkingType === 'unknown' && nearbyParkingCount > 0 ? `근처 주차장 ${nearbyParkingCount}곳` : PARKING_LABEL[v.parkingType]}
             </span>
             {distanceM !== null && (
               <span className="fact">
@@ -60,7 +78,7 @@ export const VenueCard = forwardRef<HTMLElement, Props>(function VenueCard(
             )}
             {v.latitude === null && <span className="fact muted">지도 위치 확인 중</span>}
           </div>
-          {showBeverages && <BeverageBadges beverages={v.beverages} />}
+          {showBeverages && <BeverageBadges beverages={v.beverages.filter((b) => !featured.includes(b))} />}
         </div>
       </button>
       <Link className="btn btn-secondary venue-card-cta" to={{ pathname: `/venues/${v.slug}`, search: detailSearch }}>

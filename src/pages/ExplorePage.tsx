@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import catalog from '../../data/catalog/catalog.json';
 import {
-  EMPTY_FILTER, filterToParams, filterVenues, haversineMeters, hasCoords, paramsToFilter, sortVenues,
+  EMPTY_FILTER, filterToParams, filterVenues, haversineMeters, hasCoords, nearbyParking, paramsToFilter, sortVenues,
   summarizeFilter, type FilterState, type SortMode,
 } from '../../shared/filter';
 import type { AreaId, PublicVenue, PurposeTag } from '../../shared/types';
@@ -15,6 +15,9 @@ import { site } from '../config/site';
 import type { PublicDataset } from '../data/api';
 import { useDataset } from '../hooks/useDataset';
 import { useGeolocation } from '../hooks/useGeolocation';
+import { FEATURED_PRODUCTS } from '../lib/brand';
+import { BrandMark } from '../components/BrandMark';
+import { kakaoDirectionsUrl } from '../../shared/links';
 
 type View = 'split' | 'list' | 'map';
 
@@ -55,6 +58,8 @@ function Explore({ data }: { data: PublicDataset }) {
   const [sheetOpen, setSheetOpen] = useState(false);
   const [sort, setSort] = useState<SortMode>(() => session('ht_sort', 'default'));
   const [mapOk, setMapOk] = useState<boolean | null>(null);
+  const [showParking, setShowParking] = useState<boolean>(() => session('ht_show_parking', false));
+  const [parkingId, setParkingId] = useState<string | null>(null);
   const [now, setNow] = useState(() => new Date());
   const geo = useGeolocation();
   const mapRef = useRef<MapHandle>(null);
@@ -68,6 +73,10 @@ function Explore({ data }: { data: PublicDataset }) {
   useEffect(() => saveSession('ht_selected', selectedId), [selectedId]);
   useEffect(() => saveSession('ht_view', view), [view]);
   useEffect(() => saveSession('ht_sort', sort), [sort]);
+  useEffect(() => saveSession('ht_show_parking', showParking), [showParking]);
+
+  // 업소별 300m 이내 주차장 수
+  const nearCount = useMemo(() => new Map(data.venues.map((v) => [v.id, nearbyParking(v, data.parking).length])), [data.venues, data.parking]);
 
   const setFilter = useCallback(
     (next: Partial<FilterState>) => {
@@ -86,9 +95,9 @@ function Explore({ data }: { data: PublicDataset }) {
 
   // 지도와 목록이 공유하는 단일 결과 집합
   const results = useMemo(() => {
-    const list = filterVenues(data.venues, filter, now);
+    const list = filterVenues(data.venues, filter, now, { hasNearbyParking: (v) => (nearCount.get(v.id) ?? 0) > 0 });
     return sortVenues(list, geo.position ? sort : 'default', geo.position);
-  }, [data.venues, filter, now, sort, geo.position]);
+  }, [data.venues, filter, now, sort, geo.position, nearCount]);
 
   // 필터 적용 이벤트 (초기 진입 제외, 입력 중 과다 기록 방지)
   const summary = summarizeFilter(filter);
@@ -132,6 +141,8 @@ function Explore({ data }: { data: PublicDataset }) {
   const selected = results.find((v) => v.id === selectedId) ?? null;
   const sourceSearch = params.get('source') ? `?source=${encodeURIComponent(params.get('source')!)}` : '';
   const activeExtra = filter.products.length + (filter.draftOnly ? 1 : 0);
+  const featuredOnly = !filter.draftOnly && filter.products.length === FEATURED_PRODUCTS.length && FEATURED_PRODUCTS.every((p) => filter.products.includes(p));
+  const selectedLot = data.parking.find((p) => p.id === parkingId) ?? null;
 
   return (
     <div className="explore" data-view={view}>
@@ -198,6 +209,12 @@ function Explore({ data }: { data: PublicDataset }) {
           </div>
 
           <div className="chip-row" aria-label="추가 조건">
+            {showBev && (
+              <button type="button" aria-pressed={featuredOnly} className={`chip chip-featured${featuredOnly ? ' is-on' : ''}`} onClick={() => setFilter({ products: featuredOnly ? [] : [...FEATURED_PRODUCTS], draftOnly: false })}>
+                <BrandMark productId="cass" size={17} />
+                카스·한맥 있는 곳
+              </button>
+            )}
             <button type="button" aria-pressed={filter.parking} className={`chip${filter.parking ? ' is-on' : ''}`} onClick={() => setFilter({ parking: !filter.parking })}>
               <Icon name="car" size={15} />
               주차 가능
@@ -214,7 +231,7 @@ function Explore({ data }: { data: PublicDataset }) {
             )}
           </div>
           {filter.openNow && <p className="hint">등록된 영업시간으로 계산한 결과이며, 실제 영업 여부는 업소 사정에 따라 다를 수 있습니다.</p>}
-          {filter.parking && <p className="hint">주차 가능은 주차 방법이 있다는 뜻이며 빈자리를 보장하지 않습니다.</p>}
+          {filter.parking && <p className="hint">매장 주차가 있거나 300m 안에 주차장이 있는 곳입니다. 빈자리·요금은 보장하지 않습니다.</p>}
         </section>
 
         <div className="toolbar" role="toolbar" aria-label="보기 설정">
@@ -277,6 +294,7 @@ function Explore({ data }: { data: PublicDataset }) {
                 distanceM={distance(v)}
                 showBeverages={showBev}
                 detailSearch={sourceSearch}
+                nearbyParkingCount={nearCount.get(v.id) ?? 0}
                 onSelect={() => setSelectedId(v.id)}
               />
             ))
@@ -295,11 +313,29 @@ function Explore({ data }: { data: PublicDataset }) {
           myLocation={geo.position}
           persistKey="explore"
           onStatus={(s) => setMapOk(s === 'ready')}
+          parking={data.parking}
+          showParking={showParking}
+          selectedParkingId={parkingId}
+          onParkingSelect={setParkingId}
         />
+        {mapOk && data.parking.length > 0 && (
+          <button type="button" aria-pressed={showParking} className={`map-float map-float-parking btn btn-small${showParking ? ' is-on' : ''}`} onClick={() => { setShowParking((s) => !s); setParkingId(null); }}>
+            <span className="p-mark" aria-hidden="true">P</span> 주차장 {showParking ? '숨기기' : '보기'}
+          </button>
+        )}
         {mapOk && !filter.bounds && (
           <button type="button" className="map-float btn btn-small" onClick={applyBounds}>
             <Icon name="search" size={15} /> 이 지도에서 보기
           </button>
+        )}
+        {showParking && selectedLot && (
+          <div className="map-selected parking-selected" role="status">
+            <div>
+              <strong><span className={`p-mark p-${selectedLot.kind}`} aria-hidden="true">P</span> {selectedLot.name}</strong>
+              <span className="muted small"> · {selectedLot.kind === 'public' ? '공영주차장' : '건물·오피스텔 주차장'} · 요금·운영시간 확인 필요</span>
+            </div>
+            <a className="btn btn-small btn-primary" href={kakaoDirectionsUrl({ name: selectedLot.name, latitude: selectedLot.latitude, longitude: selectedLot.longitude, kakaoPlaceId: selectedLot.kakaoPlaceId, address: selectedLot.address })} target="_blank" rel="noopener noreferrer">길찾기</a>
+          </div>
         )}
         {view === 'map' && selected && (
           <div className="map-selected">

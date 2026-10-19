@@ -1,6 +1,6 @@
 // 공개 데이터 접근 계층. 화면 컴포넌트는 이 모듈만 사용하고 데이터 출처(데모/서버/정적 JSON)를 모른다.
 import { env, withBase } from '../config/site';
-import type { PublicVenue, SiteSettings } from '../../shared/types';
+import type { ParkingLot, PublicVenue, SiteSettings } from '../../shared/types';
 
 export interface PublicConfig {
   notices: { id: string; text: string }[];
@@ -11,6 +11,7 @@ export interface PublicConfig {
 
 export interface PublicDataset {
   venues: PublicVenue[];
+  parking: ParkingLot[];
   config: PublicConfig;
   isDemo: boolean;
   /** 네트워크 실패로 이전에 받아둔 데이터를 보여주는 경우 그 시각 */
@@ -24,7 +25,7 @@ const DEFAULT_CONFIG: PublicConfig = {
   contactEmail: null,
 };
 
-const CACHE_KEY = 'ht_public_cache_v1';
+const CACHE_KEY = 'ht_public_cache_v2';
 let cached: Promise<PublicDataset> | null = null;
 
 async function getJson<T>(url: string): Promise<T> {
@@ -41,16 +42,17 @@ async function getJson<T>(url: string): Promise<T> {
 
 async function loadLive(): Promise<PublicDataset> {
   try {
-    let data: { venues: PublicVenue[]; config: PublicConfig };
+    let data: { venues: PublicVenue[]; parking: ParkingLot[]; config: PublicConfig };
     if (env.publicDataUrl) {
-      const j = await getJson<{ venues: PublicVenue[]; settings: PublicConfig }>(env.publicDataUrl.startsWith('/') ? withBase(env.publicDataUrl) : env.publicDataUrl);
-      data = { venues: j.venues, config: { ...DEFAULT_CONFIG, ...j.settings } };
+      const j = await getJson<{ venues: PublicVenue[]; parking?: ParkingLot[]; settings: PublicConfig }>(env.publicDataUrl.startsWith('/') ? withBase(env.publicDataUrl) : env.publicDataUrl);
+      data = { venues: j.venues, parking: j.parking ?? [], config: { ...DEFAULT_CONFIG, ...j.settings } };
     } else {
-      const [v, c] = await Promise.all([
+      const [v, c, p] = await Promise.all([
         getJson<{ venues: PublicVenue[] }>('/api/public/venues'),
         getJson<PublicConfig>('/api/public/config'),
+        getJson<{ parking: ParkingLot[] }>('/api/public/parking').catch(() => ({ parking: [] })),
       ]);
-      data = { venues: v.venues, config: { ...DEFAULT_CONFIG, ...c } };
+      data = { venues: v.venues, parking: p.parking, config: { ...DEFAULT_CONFIG, ...c } };
     }
     try {
       localStorage.setItem(CACHE_KEY, JSON.stringify({ ...data, savedAt: new Date().toISOString() }));
@@ -61,8 +63,8 @@ async function loadLive(): Promise<PublicDataset> {
     try {
       const raw = localStorage.getItem(CACHE_KEY);
       if (raw) {
-        const c = JSON.parse(raw) as { venues: PublicVenue[]; config: PublicConfig; savedAt: string };
-        return { venues: c.venues, config: c.config, isDemo: false, staleSince: c.savedAt };
+        const c = JSON.parse(raw) as { venues: PublicVenue[]; parking?: ParkingLot[]; config: PublicConfig; savedAt: string };
+        return { venues: c.venues, parking: c.parking ?? [], config: c.config, isDemo: false, staleSince: c.savedAt };
       }
     } catch { /* ignore */ }
     throw e;
@@ -72,7 +74,7 @@ async function loadLive(): Promise<PublicDataset> {
 async function loadDemo(): Promise<PublicDataset> {
   // live 빌드에서는 이 분기가 제거되어 데모 파일이 번들에 포함되지 않음
   const mod = await import('../demo/venues.demo.json');
-  return { venues: mod.default.venues as unknown as PublicVenue[], config: DEFAULT_CONFIG, isDemo: true, staleSince: null };
+  return { venues: mod.default.venues as unknown as PublicVenue[], parking: [], config: DEFAULT_CONFIG, isDemo: true, staleSince: null };
 }
 
 export function loadPublicData(force = false): Promise<PublicDataset> {

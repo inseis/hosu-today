@@ -1,6 +1,6 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
-import type { Campaign, ErrorReport, SiteSettings, Venue, VenueOps } from '../shared/types';
+import type { Campaign, ErrorReport, ParkingLot, SiteSettings, Venue, VenueOps } from '../shared/types';
 
 // 단일 서버용 JSON 파일 저장소. 쓰기는 임시 파일 → rename 으로 원자적으로 처리하고,
 // 프로세스 안에서 직렬화한다. 여러 서버 인스턴스로 확장할 때는 DB로 교체해야 한다.
@@ -13,6 +13,7 @@ export interface StoreShape {
   campaigns: Campaign[];
   settings: SiteSettings;
   reports: ErrorReport[];
+  parking: ParkingLot[];
   /** 날짜별 이벤트 집계: { 'YYYY-MM-DD': { 'event|venueId|source': count } } — 개인 단위 기록 없음 */
   metrics: Record<string, Record<string, number>>;
 }
@@ -27,7 +28,7 @@ export const DEFAULT_SETTINGS: SiteSettings = {
 };
 
 const DEFAULTS: StoreShape = {
-  venues: [], ops: [], campaigns: [], settings: DEFAULT_SETTINGS, reports: [], metrics: {},
+  venues: [], ops: [], campaigns: [], settings: DEFAULT_SETTINGS, reports: [], parking: [], metrics: {},
 };
 
 const file = (k: keyof StoreShape) => path.join(DATA_DIR, `${k}.json`);

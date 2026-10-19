@@ -65,3 +65,13 @@ describe('필터', () => {
     expect(near[near.length - 1].id).toBe('c'); // 좌표 없음 → 뒤로
   });
 });
+
+describe('인근 주차장', () => {
+  const lot = { id: 'pk-1', name: '장항제4공영주차장', kind: 'public' as const, address: null, latitude: 37.6601, longitude: 126.77, kakaoPlaceId: null, collectedAt: '2026-10-19' };
+  it('300m 이내 주차장이 있으면 주차 가능 필터에 포함', async () => {
+    const { nearbyParking } = await import('../shared/filter');
+    const near = (v: (typeof list)[number]) => nearbyParking(v, [lot]).length > 0;
+    expect(nearbyParking(list[0], [lot])[0].meters).toBeLessThan(300);
+    expect(filterVenues(list, { ...EMPTY_FILTER, parking: true }, new Date(), { hasNearbyParking: near }).map((v) => v.id)).toEqual(['a', 'b']);
+  });
+});

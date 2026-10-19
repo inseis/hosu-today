@@ -1,5 +1,5 @@
 import { getOpenStatus } from './hours';
-import type { AreaId, PublicVenue, PurposeTag } from './types';
+import type { AreaId, ParkingLot, PublicVenue, PurposeTag } from './types';
 
 // 지도와 목록은 반드시 이 함수 하나의 결과를 함께 사용한다.
 
@@ -49,12 +49,26 @@ export function matchesBeverage(v: PublicVenue, products: string[], draftOnly: b
   return products.some((p) => avail.some((b) => b.productId === p && ok(b)));
 }
 
-export function filterVenues(venues: PublicVenue[], f: FilterState, now: Date = new Date()): PublicVenue[] {
+/** 업소에서 maxM 이내 주차장 (직선거리 오름차순) */
+export function nearbyParking(v: PublicVenue, lots: ParkingLot[], maxM = 300): { lot: ParkingLot; meters: number }[] {
+  if (!hasCoords(v)) return [];
+  return lots
+    .map((lot) => ({ lot, meters: haversineMeters({ lat: v.latitude, lng: v.longitude }, { lat: lot.latitude, lng: lot.longitude }) }))
+    .filter((x) => x.meters <= maxM)
+    .sort((a, b) => a.meters - b.meters);
+}
+
+export interface FilterOptions {
+  /** '주차 가능' 필터에서 업소 자체 주차 외에 인근 주차장도 인정할지 판단 */
+  hasNearbyParking?: (v: PublicVenue) => boolean;
+}
+
+export function filterVenues(venues: PublicVenue[], f: FilterState, now: Date = new Date(), opts: FilterOptions = {}): PublicVenue[] {
   const q = norm(f.q);
   return venues.filter((v) => {
     if (f.area !== 'all' && v.area !== f.area) return false;
     if (f.purposes.length && !f.purposes.every((p) => v.purposeTags.includes(p))) return false;
-    if (f.parking && !PARKING_OK.has(v.parkingType)) return false;
+    if (f.parking && !PARKING_OK.has(v.parkingType) && !opts.hasNearbyParking?.(v)) return false;
     if (f.openNow && getOpenStatus(v, now).state !== 'open') return false;
     if (!matchesBeverage(v, f.products, f.draftOnly)) return false;
     if (f.bounds && !inBounds(v, f.bounds)) return false;

@@ -254,3 +254,57 @@ h1, h2, h3 { line-height: 1.3; margin: 0; }
 }
 .toolbar { flex-wrap: wrap; }
 .view-toggle button { white-space: nowrap; }
+
+/* ───────── 카스·한맥 취급 강조 (공식 로고 아님: 색·아이콘·글자) ───────── */
+:root { --cass: #1f4fa0; --cass-zero: #1f7fae; --hanmac: #a87420; --feat-bg: #eef3fb; }
+.venue-card.is-featured { border: 2px solid var(--cass); box-shadow: 0 4px 14px rgba(31, 79, 160, 0.12); }
+.venue-card.is-featured.is-selected { box-shadow: 0 0 0 2px var(--ink); }
+.featured-ribbon, .detail-featured {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; padding: 8px 12px;
+  background: linear-gradient(90deg, var(--feat-bg), #fbf5e9);
+  border-bottom: 1px solid #d9e2f2;
+}
+.detail-featured { border: 1px solid #d9e2f2; border-radius: var(--radius-sm); margin-top: 12px; }
+.featured-ribbon-title { font-size: 0.78rem; font-weight: 800; color: var(--cass); letter-spacing: 0.02em; }
+.featured-list { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; }
+.featured-chip {
+  display: inline-flex; align-items: center; gap: 4px; padding: 3px 9px 3px 5px; border-radius: 999px;
+  background: #fff; font-size: 0.82rem; font-weight: 700; border: 1.5px solid currentColor;
+}
+.brand-cass { color: var(--cass); }
+.brand-cass-zero { color: var(--cass-zero); }
+.brand-hanmac { color: var(--hanmac); }
+.chip-featured { border-color: var(--cass); color: var(--cass); font-weight: 700; }
+.chip-featured.is-on { background: var(--cass); border-color: var(--cass); color: #fff; }
+.chip-featured.is-on svg path { stroke: #fff; }
+
+/* 지도 마커: 강조 업소 */
+.map-marker { display: inline-flex; align-items: center; gap: 4px; }
+.map-marker-label { overflow: hidden; text-overflow: ellipsis; }
+.map-marker.is-featured { border-color: var(--cass); background: var(--cass); color: #fff; padding-left: 6px; box-shadow: 0 3px 10px rgba(31, 79, 160, 0.35); }
+.map-marker.is-featured .map-marker-icon {
+  width: 18px; height: 18px; border-radius: 50%; background: #fff; flex: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 7h9v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V7Z' fill='%23d9a33a' stroke='%231f4fa0' stroke-width='1.6'/%3E%3Cpath d='M15 10h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2' fill='none' stroke='%231f4fa0' stroke-width='1.8'/%3E%3Cpath d='M5.5 7.5c0-2 1.6-3 3-3 .7-1 1.8-1.5 3-1.2 1-.6 2.6-.4 3.5.6' fill='%23fff' stroke='%231f4fa0' stroke-width='1.4'/%3E%3C/svg%3E");
+  background-size: 15px; background-repeat: no-repeat; background-position: center;
+}
+.map-marker.is-featured.is-selected { background: var(--ink); border-color: var(--ink); }
+.map-marker.is-selected::before { content: none; }
+.map-marker.is-selected { outline: 3px solid #f2c14e; outline-offset: 1px; }
+/* 멀리 볼 때: 일반 업소는 점, 강조 업소는 이름 유지 */
+.map-canvas[data-zoom='far'] .map-marker:not(.is-featured):not(.is-selected) { width: 14px; min-height: 14px; height: 14px; padding: 0; border-width: 2px; }
+.map-canvas[data-zoom='far'] .map-marker:not(.is-featured):not(.is-selected) .map-marker-label { display: none; }
+
+/* 주차장 */
+.p-mark { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 5px; background: #2f6fed; color: #fff; font: 800 12px/1 var(--font); flex: none; }
+.p-mark.p-building { background: #6b7385; }
+.map-parking { width: 26px; height: 26px; border-radius: 6px; border: 2px solid #fff; background: #2f6fed; color: #fff; font: 800 13px/1 var(--font); cursor: pointer; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3); }
+.map-parking-building { background: #6b7385; }
+.map-parking.is-selected { outline: 3px solid #f2c14e; transform: scale(1.15); }
+.map-float-parking { top: 60px; }
+.map-float-parking.is-on { background: #2f6fed; color: #fff; border-color: #2f6fed; }
+.map-float-parking.is-on .p-mark { background: #fff; color: #2f6fed; }
+.parking-selected strong { display: inline-flex; align-items: center; gap: 6px; }
+.nearby-parking { margin: 12px 0; padding: 10px 12px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface); }
+.nearby-parking ul { list-style: none; margin: 6px 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.nearby-parking li { display: flex; align-items: center; gap: 8px; }
+.nearby-parking-text { flex: 1; min-width: 0; display: flex; flex-direction: column; }

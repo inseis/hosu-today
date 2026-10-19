@@ -53,6 +53,11 @@ export function createApp() {
     res.json({ venues: await publicVenues(), generatedAt: new Date().toISOString() });
   });
 
+  app.get('/api/public/parking', async (_req, res) => {
+    res.set('Cache-Control', 'public, max-age=300');
+    res.json({ parking: await read('parking') });
+  });
+
   app.get('/api/public/venues/:slug', async (req, res) => {
     const v = (await publicVenues()).find((x) => x.slug === req.params.slug);
     if (!v) return res.status(404).json({ error: 'not_found' });

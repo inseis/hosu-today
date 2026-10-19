@@ -32,10 +32,10 @@ jobs:
       - name: Build
         env:
           VITE_BASE_PATH: /${{ github.event.repository.name }}/
-          # GitHub Pages에는 서버(관리자·제보·집계)가 없으므로 데모 데이터로 공개.
-          # 실제 업소를 공개할 때는 live + VITE_PUBLIC_DATA_URL=/data/public.json 으로 바꾼다 (docs/DEPLOY.md).
-          VITE_DATA_MODE: ${{ vars.VITE_DATA_MODE || 'demo' }}
-          VITE_PUBLIC_DATA_URL: ${{ vars.VITE_PUBLIC_DATA_URL }}
+          # GitHub Pages에는 서버가 없으므로 게시 승인 업소만 담긴 정적 JSON(public/data/public.json)을 사용.
+          # 갱신: 로컬에서 관리자 수정 → npm run export:public → 커밋·푸시 (docs/DEPLOY.md §B)
+          VITE_DATA_MODE: ${{ vars.VITE_DATA_MODE || 'live' }}
+          VITE_PUBLIC_DATA_URL: ${{ vars.VITE_PUBLIC_DATA_URL || '/data/public.json' }}
           VITE_KAKAO_MAP_JAVASCRIPT_KEY: ${{ vars.VITE_KAKAO_MAP_JAVASCRIPT_KEY }}
           VITE_PUBLIC_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
           VITE_SITE_NAME: 호수공원 옆, 오늘의 한 곳

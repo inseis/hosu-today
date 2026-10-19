@@ -110,6 +110,23 @@ export interface VenueOps {
   updatedAt: string;
 }
 
+/**
+ * 업소 주변 주차장 (카카오 장소 카테고리 '주차장' 검색 결과에서 등록).
+ * 요금·운영시간·빈자리는 확인되지 않은 값이므로 저장하지 않는다.
+ */
+export interface ParkingLot {
+  id: string;
+  name: string;
+  /** public: 이름에 '공영'이 들어간 공영주차장 / building: 건물·오피스텔 등 부설·민영 */
+  kind: 'public' | 'building';
+  address: string | null;
+  latitude: number;
+  longitude: number;
+  kakaoPlaceId: string | null;
+  /** 정보 수집일 YYYY-MM-DD */
+  collectedAt: string;
+}
+
 export interface Campaign {
   /** QR 주소의 source 값 */
   id: string;
