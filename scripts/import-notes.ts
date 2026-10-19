@@ -45,7 +45,8 @@ const CATEGORY: Record<string, string> = {
 // 노트의 제품 표기 → 카탈로그 제품. 코로나 등 카탈로그에 없는 제품은 제외
 const PRODUCTS: Record<string, Omit<Beverage, 'availabilityStatus' | 'verifiedAt' | 'price'>> = {
   '카스 생': { productId: 'cass', brand: '카스', productName: '카스', servingType: 'draft', volumeMl: null },
-  '카스 0.0': { productId: 'cass-zero', brand: '카스', productName: '카스 0.0', servingType: 'unknown', volumeMl: null },
+  // 노트의 '카스 0.0' 표기는 운영자 확인에 따라 카스 0.00 병맥주로 등록 (2026-10-19)
+  '카스 0.0': { productId: 'cass-zero', brand: '카스', productName: '카스 0.00', servingType: 'bottle', volumeMl: null },
   '한맥 병': { productId: 'hanmac', brand: '한맥', productName: '한맥', servingType: 'bottle', volumeMl: null },
   '한맥 생': { productId: 'hanmac', brand: '한맥', productName: '한맥', servingType: 'draft', volumeMl: null },
   '스텔라 생': { productId: 'stella', brand: '스텔라', productName: '스텔라', servingType: 'draft', volumeMl: null },

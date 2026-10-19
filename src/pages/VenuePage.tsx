@@ -124,7 +124,7 @@ export function VenueDetail({ venue: v, isDemo, showBeverages, contactEmail, onB
             <span className="featured-ribbon-title">카스·한맥 취급</span>
             <ul className="featured-list">
               {featured.map((b, i) => (
-                <li key={i} className={`featured-chip brand-${b.productId}`}><BrandMark productId={b.productId} size={20} />{featuredLabel(b)}</li>
+                <li key={i} className={`featured-chip brand-${b.productId}`}><BrandMark productId={b.productId} servingType={b.servingType} size={22} imageHeight={72} />{featuredLabel(b)}</li>
               ))}
             </ul>
           </div>

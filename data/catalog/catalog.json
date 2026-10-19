@@ -1,22 +1,74 @@
 {
   "_comment": "고객 화면 선택지 목록. 항목 추가·수정은 이 파일에서 합니다. id는 데이터 연결 키이므로 변경 시 업소 데이터의 productId도 함께 바꿔야 합니다.",
   "areas": [
-    { "id": "lafesta", "label": "라페스타" },
-    { "id": "westerndom", "label": "웨스턴돔" },
-    { "id": "lakepark", "label": "호수공원 인근" }
+    {
+      "id": "lafesta",
+      "label": "라페스타"
+    },
+    {
+      "id": "westerndom",
+      "label": "웨스턴돔"
+    },
+    {
+      "id": "lakepark",
+      "label": "호수공원 인근"
+    }
   ],
   "purposes": [
-    { "id": "meal", "label": "식사하기", "icon": "🍚" },
-    { "id": "light-snack", "label": "가벼운 안주", "icon": "🥢" },
-    { "id": "group", "label": "여럿이 모이기", "icon": "👥" },
-    { "id": "quiet-talk", "label": "조용히 대화하기", "icon": "💬" }
+    {
+      "id": "meal",
+      "label": "식사하기",
+      "icon": "🍚"
+    },
+    {
+      "id": "light-snack",
+      "label": "가벼운 안주",
+      "icon": "🥢"
+    },
+    {
+      "id": "group",
+      "label": "여럿이 모이기",
+      "icon": "👥"
+    },
+    {
+      "id": "quiet-talk",
+      "label": "조용히 대화하기",
+      "icon": "💬"
+    }
   ],
   "beverageProducts": [
-    { "id": "cass", "brand": "카스", "label": "카스" },
-    { "id": "hanmac", "brand": "한맥", "label": "한맥" },
-    { "id": "cass-zero", "brand": "카스", "label": "카스 제로", "note": "카스 0.0 / 카스 0.00 등은 서로 다른 제품입니다. 업소 데이터의 정확한 제품명(productName)을 그대로 표시합니다." },
-    { "id": "cass-lemon-squeeze-zero", "brand": "카스", "label": "카스 레몬스퀴즈 제로" },
-    { "id": "budweiser", "brand": "버드와이저", "label": "버드와이저" },
-    { "id": "stella", "brand": "스텔라", "label": "스텔라" }
-  ]
+    {
+      "id": "cass",
+      "brand": "카스",
+      "label": "카스"
+    },
+    {
+      "id": "hanmac",
+      "brand": "한맥",
+      "label": "한맥"
+    },
+    {
+      "id": "cass-zero",
+      "brand": "카스",
+      "label": "카스 0.00",
+      "note": "병 라벨 표기 NON ALCOHOLIC. 카스 0.0 등 다른 제품과 구분해 업소 데이터의 정확한 제품명을 표시합니다.",
+      "nonAlcoholic": true
+    },
+    {
+      "id": "cass-lemon-squeeze-zero",
+      "brand": "카스",
+      "label": "카스 레몬스퀴즈 제로"
+    },
+    {
+      "id": "budweiser",
+      "brand": "버드와이저",
+      "label": "버드와이저"
+    },
+    {
+      "id": "stella",
+      "brand": "스텔라",
+      "label": "스텔라"
+    }
+  ],
+  "nonAlcoholicLabel": "논알콜·무알콜"
 }

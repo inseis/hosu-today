@@ -1,6 +1,6 @@
 // 서비스 이름·소개 문구 등 화면 문구 설정. 이름 변경은 VITE_SITE_NAME 또는 여기서.
 export const site = {
-  name: import.meta.env.VITE_SITE_NAME || '호수공원 옆, 오늘의 한 곳',
+  name: import.meta.env.VITE_SITE_NAME || '호수원픽',
   tagline: '식사부터 모임까지, 주변 한 곳을 찾아보세요.',
   // 참여 업소 안내 서비스임을 명확히 밝히는 문구
   disclosure:

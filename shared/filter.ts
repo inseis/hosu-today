@@ -1,3 +1,4 @@
+import catalog from '../data/catalog/catalog.json';
 import { getOpenStatus } from './hours';
 import type { AreaId, ParkingLot, PublicVenue, PurposeTag } from './types';
 
@@ -16,13 +17,22 @@ export interface FilterState {
   openNow: boolean;
   products: string[];
   draftOnly: boolean;
+  /** 논알콜·무알콜 제품 취급 확인 업소만 */
+  nonAlc: boolean;
   bounds: Bounds | null;
 }
 
 export const EMPTY_FILTER: FilterState = {
   q: '', area: 'all', purposes: [], parking: false, openNow: false,
-  products: [], draftOnly: false, bounds: null,
+  products: [], draftOnly: false, nonAlc: false, bounds: null,
 };
+
+/** 카탈로그에서 nonAlcoholic 표시된 제품 */
+export const NON_ALC_PRODUCTS: string[] = catalog.beverageProducts.filter((p) => (p as { nonAlcoholic?: boolean }).nonAlcoholic).map((p) => p.id);
+
+export function hasNonAlc(v: PublicVenue): boolean {
+  return v.beverages.some((b) => b.availabilityStatus === 'available' && NON_ALC_PRODUCTS.includes(b.productId));
+}
 
 const PARKING_OK = new Set(['dedicated', 'building', 'public-nearby']);
 
@@ -71,6 +81,7 @@ export function filterVenues(venues: PublicVenue[], f: FilterState, now: Date = 
     if (f.parking && !PARKING_OK.has(v.parkingType) && !opts.hasNearbyParking?.(v)) return false;
     if (f.openNow && getOpenStatus(v, now).state !== 'open') return false;
     if (!matchesBeverage(v, f.products, f.draftOnly)) return false;
+    if (f.nonAlc && !hasNonAlc(v)) return false;
     if (f.bounds && !inBounds(v, f.bounds)) return false;
     if (q) {
       const hay = norm([v.name, v.category, v.address ?? '', v.addressDetail ?? '', ...v.featuredMenus.map((m) => m.name)].join(' '));
@@ -120,6 +131,7 @@ export function filterToParams(f: FilterState, params = new URLSearchParams()): 
   set('open', f.openNow ? '1' : null);
   set('drink', f.products.join(',') || null);
   set('draft', f.draftOnly ? '1' : null);
+  set('na', f.nonAlc ? '1' : null);
   set('bounds', f.bounds ? [f.bounds.sw.lat, f.bounds.sw.lng, f.bounds.ne.lat, f.bounds.ne.lng].map((n) => n.toFixed(5)).join(',') : null);
   return params;
 }
@@ -139,6 +151,7 @@ export function paramsToFilter(p: URLSearchParams): FilterState {
     openNow: p.get('open') === '1',
     products: list('drink').filter((x) => /^[a-z0-9-]{1,40}$/.test(x)),
     draftOnly: p.get('draft') === '1',
+    nonAlc: p.get('na') === '1',
     bounds: b.length === 4 && b.every(Number.isFinite) ? { sw: { lat: b[0], lng: b[1] }, ne: { lat: b[2], lng: b[3] } } : null,
   };
 }
@@ -151,6 +164,7 @@ export function summarizeFilter(f: FilterState): string {
   if (f.openNow) parts.push('openNow');
   if (f.products.length) parts.push(`drink:${f.products.join('+')}`);
   if (f.draftOnly) parts.push('draftOnly');
+  if (f.nonAlc) parts.push('nonAlc');
   if (f.bounds) parts.push('mapBounds');
   if (f.q.trim()) parts.push('search');
   return parts.join('|') || 'none';

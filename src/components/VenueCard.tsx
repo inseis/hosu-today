@@ -34,7 +34,7 @@ export const VenueCard = forwardRef<HTMLElement, Props>(function VenueCard(
           <ul className="featured-list">
             {featured.map((b, i) => (
               <li key={`${b.productId}-${b.servingType}-${i}`} className={`featured-chip brand-${b.productId}`}>
-                <BrandMark productId={b.productId} size={18} />
+                <BrandMark productId={b.productId} servingType={b.servingType} size={18} imageHeight={40} />
                 {featuredLabel(b)}
               </li>
             ))}

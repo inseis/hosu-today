@@ -21,3 +21,14 @@ export function featuredLabel(b: Beverage): string {
   const serving = b.servingType === 'draft' ? ' 생맥주' : b.servingType === 'bottle' ? ' 병' : b.servingType === 'can' ? ' 캔' : '';
   return `${b.productName}${serving}`;
 }
+
+/**
+ * 운영자가 제공한 공식 제품 이미지 (public/images/brands).
+ * 이미지가 없는 조합(예: 카스 생맥주)은 null → 아이콘으로 표시
+ */
+export function brandImage(b: Pick<Beverage, 'productId' | 'servingType'>): string | null {
+  if (b.productId === 'cass-zero') return 'cass-zero-bottle.png';
+  if (b.productId === 'cass' && b.servingType === 'bottle') return 'cass-bottle.png';
+  if (b.productId === 'hanmac') return b.servingType === 'draft' ? 'hanmac-draft.png' : 'hanmac-bottle.png';
+  return null;
+}

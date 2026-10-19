@@ -17,6 +17,7 @@ import { useDataset } from '../hooks/useDataset';
 import { useGeolocation } from '../hooks/useGeolocation';
 import { FEATURED_PRODUCTS } from '../lib/brand';
 import { BrandMark } from '../components/BrandMark';
+import { Recommender } from '../components/Recommender';
 import { kakaoDirectionsUrl } from '../../shared/links';
 
 type View = 'split' | 'list' | 'map';
@@ -165,6 +166,19 @@ function Explore({ data }: { data: PublicDataset }) {
           </Notice>
         )}
 
+        <div className="reco-wrap">
+          <Recommender
+            venues={data.venues}
+            showBeverages={showBev}
+            detailSearch={sourceSearch}
+            onShowOnMap={(id) => {
+              setSelectedId(id);
+              if (view === 'list') setView('split');
+              document.querySelector('.toolbar')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
+          />
+        </div>
+
         <section className="filters" aria-label="검색과 필터">
           <label className="search">
             <Icon name="search" />
@@ -219,10 +233,12 @@ function Explore({ data }: { data: PublicDataset }) {
               <Icon name="car" size={15} />
               주차 가능
             </button>
-            <button type="button" aria-pressed={filter.openNow} className={`chip${filter.openNow ? ' is-on' : ''}`} onClick={() => setFilter({ openNow: !filter.openNow })}>
-              <Icon name="clock" size={15} />
-              등록 영업시간 기준 운영 중
-            </button>
+            {showBev && (
+              <button type="button" aria-pressed={filter.nonAlc} className={`chip chip-nonalc${filter.nonAlc ? ' is-on' : ''}`} onClick={() => setFilter({ nonAlc: !filter.nonAlc })}>
+                <span className="nonalc-mark" aria-hidden="true">0.00</span>
+                {catalog.nonAlcoholicLabel}
+              </button>
+            )}
             {showBev && (
               <button type="button" aria-haspopup="dialog" className={`chip${activeExtra ? ' is-on' : ''}`} onClick={() => setSheetOpen(true)}>
                 <Icon name="glass" size={15} />
@@ -230,7 +246,6 @@ function Explore({ data }: { data: PublicDataset }) {
               </button>
             )}
           </div>
-          {filter.openNow && <p className="hint">등록된 영업시간으로 계산한 결과이며, 실제 영업 여부는 업소 사정에 따라 다를 수 있습니다.</p>}
           {filter.parking && <p className="hint">매장 주차가 있거나 300m 안에 주차장이 있는 곳입니다. 빈자리·요금은 보장하지 않습니다.</p>}
         </section>
 

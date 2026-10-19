@@ -426,8 +426,8 @@
         {
           "productId": "cass-zero",
           "brand": "카스",
-          "productName": "카스 0.0",
-          "servingType": "unknown",
+          "productName": "카스 0.00",
+          "servingType": "bottle",
           "volumeMl": null,
           "price": null,
           "availabilityStatus": "available",
@@ -714,8 +714,8 @@
         {
           "productId": "cass-zero",
           "brand": "카스",
-          "productName": "카스 0.0",
-          "servingType": "unknown",
+          "productName": "카스 0.00",
+          "servingType": "bottle",
           "volumeMl": null,
           "price": null,
           "availabilityStatus": "available",
@@ -1536,8 +1536,8 @@
         {
           "productId": "cass-zero",
           "brand": "카스",
-          "productName": "카스 0.0",
-          "servingType": "unknown",
+          "productName": "카스 0.00",
+          "servingType": "bottle",
           "volumeMl": null,
           "price": null,
           "availabilityStatus": "available",
@@ -2495,5 +2495,5 @@
     },
     "contactEmail": null
   },
-  "generatedAt": "2026-10-19T13:27:08.609Z"
+  "generatedAt": "2026-10-19T13:46:05.760Z"
 }

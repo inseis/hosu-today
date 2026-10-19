@@ -45,7 +45,7 @@ describe('필터', () => {
   });
 
   it('URL 쿼리 왕복 (뒤로 가기 시 필터 복원)', () => {
-    const f = { ...EMPTY_FILTER, q: '국수', area: 'westerndom' as const, purposes: ['group' as const], parking: true, openNow: true, products: ['hanmac'], draftOnly: true, bounds: { sw: { lat: 37.65, lng: 126.76 }, ne: { lat: 37.67, lng: 126.78 } } };
+    const f = { ...EMPTY_FILTER, q: '국수', area: 'westerndom' as const, purposes: ['group' as const], parking: true, openNow: true, products: ['hanmac'], draftOnly: true, nonAlc: true, bounds: { sw: { lat: 37.65, lng: 126.76 }, ne: { lat: 37.67, lng: 126.78 } } };
     const p = filterToParams(f, new URLSearchParams('source=lake-banner-01'));
     expect(p.get('source')).toBe('lake-banner-01');
     expect(paramsToFilter(p)).toEqual(f);
@@ -73,5 +73,16 @@ describe('인근 주차장', () => {
     const near = (v: (typeof list)[number]) => nearbyParking(v, [lot]).length > 0;
     expect(nearbyParking(list[0], [lot])[0].meters).toBeLessThan(300);
     expect(filterVenues(list, { ...EMPTY_FILTER, parking: true }, new Date(), { hasNearbyParking: near }).map((v) => v.id)).toEqual(['a', 'b']);
+  });
+});
+
+describe('논알콜·무알콜', () => {
+  it('카스 0.00 취급 확인 업소만', () => {
+    const v = [
+      toPublicVenue(venue({ id: 'z', beverages: [bev('cass-zero', 'bottle', 'available')] })),
+      toPublicVenue(venue({ id: 'u', beverages: [bev('cass-zero', 'bottle', 'unverified')] })),
+      toPublicVenue(venue({ id: 'n', beverages: [bev('cass', 'bottle', 'available')] })),
+    ];
+    expect(filterVenues(v, { ...EMPTY_FILTER, nonAlc: true }).map((x) => x.id)).toEqual(['z']);
   });
 });

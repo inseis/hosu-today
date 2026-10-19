@@ -1,7 +1,8 @@
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { hasCoords, type Bounds } from '../../shared/filter';
 import type { ParkingLot, PublicVenue } from '../../shared/types';
-import { isFeatured } from '../lib/brand';
+import { brandImage, featuredBeverages, isFeatured } from '../lib/brand';
+import { withBase } from '../config/site';
 import { KakaoError, kakaoErrorMessage, loadKakaoMaps, type KakaoLoadError } from '../lib/kakaoLoader';
 import type { PublicConfig } from '../data/api';
 
@@ -126,10 +127,21 @@ export const MapView = forwardRef<MapHandle, Props>(function MapView(
       const featured = isFeatured(v);
       node.className = featured ? 'map-marker is-featured' : 'map-marker';
       if (featured) {
-        const icon = document.createElement('span');
-        icon.className = 'map-marker-icon';
-        icon.setAttribute('aria-hidden', 'true');
-        node.appendChild(icon);
+        const imgs = [...new Set(featuredBeverages(v).map(brandImage).filter((x): x is string => !!x))].slice(0, 2);
+        if (imgs.length) {
+          for (const src of imgs) {
+            const img = document.createElement('img');
+            img.className = 'map-marker-bottle';
+            img.src = withBase(`/images/brands/${src}`);
+            img.alt = '';
+            node.appendChild(img);
+          }
+        } else {
+          const icon = document.createElement('span');
+          icon.className = 'map-marker-icon';
+          icon.setAttribute('aria-hidden', 'true');
+          node.appendChild(icon);
+        }
       }
       const label = document.createElement('span');
       label.className = 'map-marker-label';

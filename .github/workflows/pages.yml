@@ -38,7 +38,7 @@ jobs:
           VITE_PUBLIC_DATA_URL: ${{ vars.VITE_PUBLIC_DATA_URL || '/data/public.json' }}
           VITE_KAKAO_MAP_JAVASCRIPT_KEY: ${{ vars.VITE_KAKAO_MAP_JAVASCRIPT_KEY }}
           VITE_PUBLIC_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
-          VITE_SITE_NAME: 호수공원 옆, 오늘의 한 곳
+          VITE_SITE_NAME: 호수원픽
         run: npm run build
       # SPA 직접 접속(/venues/... 새로고침)을 위해 404.html로 같은 앱 제공
       - run: cp dist/index.html dist/404.html
